@@ -1,1 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+
+
+
+
+:root {
+    --primary: #000015a6;
+    --light: #ffffff;
+    --grey: #efefef;
+    --navbar: #00001552;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Muli', sans-serif;
+    font-weight: 300;
+    color: var(--primary);
+}
+
+.listado {
+    text-align: right;
+}
+
+.inputRight {
+    align-items: right;
+}
+
+.textoCentrado {
+    text-align: center;
+}
+
+
+.bg-primary {
+    background-color: var(--primary) !important;    
+}
+
+.bg-light {
+    background-color: var(--light) !important;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+#sidebar-container {
+    min-height: 100vh;   
+     
+}
+
+#sidebar-container .logo {
+    background-color: var(--navbar) !important;    
+    padding: .855rem 1.15rem;
+}
+
+#sidebar-container .menu {
+    width: 14rem;
+}
+
+.btn-search {
+    right: 5px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

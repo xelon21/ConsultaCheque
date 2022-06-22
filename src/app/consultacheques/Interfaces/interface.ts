@@ -8,4 +8,5 @@ export interface Pokeapi {
 export interface Poke {
     name: string;
     url:  string;
+    
 }

@@ -5,7 +5,7 @@ import { ConsultachequesRoutingModule } from './consultacheques-routing.module';
 import { ConsultaComponent } from './pages/consulta/consulta.component';
 import { FormularioComponent } from './pages/formulario/formulario.component';
 import { MaterialModule } from '../material/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ConsultachequesRoutingModule,
     MaterialModule,
+    ReactiveFormsModule,
     FormsModule
   
   ]

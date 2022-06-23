@@ -1,8 +1,8 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/internal/Observable";
-import { Pokeapi, Poke } from '../Interfaces/interface';
 import { tap } from 'rxjs/operators';
+import { Country } from "../Interfaces/interface";
 
 
 @Injectable({
@@ -11,27 +11,22 @@ import { tap } from 'rxjs/operators';
   
   export class ConsultaService { 
 
-    private apiUrl: string = 'https://pokeapi.co/api/v2';
+    private apiUrl: string = 'https://restcountries.com/v3.1';
 
     constructor( private http: HttpClient){}
-
     
-    getDatos(): Observable<Pokeapi[]> {
-        return this.http.get<Pokeapi[]>('https://pokeapi.co/api/v2/pokemon/')
-    }
-
-    getDatos2(): Observable<Pokeapi[]> {
-        const url = `${ this.apiUrl }/pokemon/`
-
-        return this.http.get<Pokeapi[]>(url)
-    }
-
-    getBuscador( termino: string ): Observable<any> {
-
-        const url = `${ this.apiUrl }/pokemon/${ termino }`
-
-        return this.http.get( url )
-
-    }
+    get httpParams () {
+        return new HttpParams()
+              .set( 'fields', 'name,capital,cca2,flags,population,area' )    
+      }
+    
+    
+    buscarPais( termino: string ): Observable<Country[]> {
+    
+        const url = `${ this.apiUrl }/name/${ termino }`;
+    
+        return this.http.get<Country[]>( url, {params: this.httpParams} );
+                  
+      }
 
   }

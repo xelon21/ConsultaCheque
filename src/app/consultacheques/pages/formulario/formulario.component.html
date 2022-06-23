@@ -1,17 +1,18 @@
+<script src="../../../material/jquery.js" charset="utf-8"> </script>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
       <mat-card >
-          <form>
+          <form [formGroup]="consultaCheque">
             <br>
               <div class="row">
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-4 " >
                   <label for="inputObservacion">Observacion</label>
-                  <input type="text" class="form-control" id="inputObservacion" placeholder="Este cheque esta sin fondos">
+                  <input type="text" class="form-control" formControlName="observacion"  id="inputObservacion" placeholder="Este cheque esta sin fondos">
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-4 ">
                   <label for="estadoClave">Estado Clave</label>
-                  <input type="text" class="form-control" id="estadoClave" placeholder="____________">
+                  <input type="text" class="form-control" formControlName="estadoClave" id="estadoClave" placeholder="____________">
                 </div>
               </div>
 
@@ -19,56 +20,64 @@
               <div class="row">
                 <div class="form-group col-sm-6 col-md-4 col-lg-2 col-xl-2 " >
                   <label for="inputConsutla">N° Consulta</label>
-                  <input type="text" class="form-control" id="inputConsulta" placeholder="____________">
+                  <input type="text" class="form-control" formControlName="numeroConsulta" id="inputConsulta" placeholder="____________">
                 </div>
                 <div class="form-group col-sm-6 col-md-4 col-lg-2 col-xl-2 ">
                   <label for="inputclaveCliente">Clave Cliente</label>
-                  <input type="text" class="form-control" id="inputclaveCliente" placeholder="---------------">
+                  <input type="text" class="form-control" formControlName="claveCliente" id="inputclaveCliente" placeholder="---------------">
                 </div>
                 <div class="form-group col-sm-6 col-md-2 col-lg-1 col-xl-1 " >
                   <label for="inputBanco">Banco</label>
-                  <input type="text" class="form-control" id="inputBanco" placeholder="____________">
+                  <input type="text" class="form-control" formControlName="banco" id="inputBanco" placeholder="____________">
                 </div>
                 <div class="form-group col-sm-6 col-md-4 col-lg-2 col-xl-2 ">
                   <label for="inputCuentaCorriente">Cuenta Corriente</label>
-                  <input type="text" class="form-control" id="inputCuentaCorriente" placeholder="---------------">
+                  <input type="text" class="form-control" formControlName="cuentaCorriente" id="inputCuentaCorriente" placeholder="---------------">
                 </div>
                 <div class="form-group col-sm-6 col-md-4 col-lg-2 col-xl-2 " >
                   <label for="inputMontoCompra">Monto de Compra</label>
-                  <input type="text" class="form-control" id="inputMontoCompra" placeholder="____________">
+                  <input type="text" class="form-control" formControlName="montoCompra" id="inputMontoCompra" placeholder="____________">
                 </div>
                 <div class="form-group col-sm-6 col-md-4 col-lg-2 col-xl-2 ">
                   <label for="inputRutGirador">Rut Girador</label>
-                  <input type="text" class="form-control" id="inputRutGirador" placeholder="---------------">
+                  <input type="text" class="form-control" formControlName="rutGirador" id="inputRutGirador" placeholder="---------------">
                 </div>
               </div>
               
               <br>
               <div class="row">
-                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 " >
+                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-2 " >
                   <label for="inputTitular">Titular</label>
-                  <input type="text" class="form-control" id="inputTitular" placeholder="____________">
+                  <input type="text" class="form-control" formControlName="titular" id="inputTitular" placeholder="____________">
                 </div>
-                <div class="form-group col-sm-6 col-md-4 col-lg-2 col-xl-4 ">
-                  <ul class="list-group">
-                    <li class="list-group-item">
-                      <input type="text" class="form-control" placeholder="Fono Referencia">
-                    </li>
-                    <li class="list-group-item">                 
-                  <input type="text" class="form-control" placeholder="Fono Referencia2">
-                    </li>               
-                  </ul>
+                <div class="form-group col-sm-6 col-md-4 col-lg-4 col-xl-5 ">
+                  <mat-card>
+                    <ul class="list-group">
+                      <li class="list-group">
+                        <input type="text" class="form-control"formControlName="fonoReferencia1" placeholder="Fono Referencia">
+                      </li>                    
+                      <hr>
+                      <li class="list-group">                 
+                    <input type="text" class="form-control" formControlName="fonoReferencia2" placeholder="Fono Referencia2">
+                      </li>               
+                    </ul>
+                    
+                  </mat-card>
                   
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 " >
-                  <ul class="list-group">
-                    <li class="list-group-item">
-                      <input type="text" class="form-control"  placeholder="Observacion Telefono 1">                      
-                    </li>
-                    <li class="list-group-item">                     
-                      <input type="text" class="form-control"  placeholder="Observacion Telefono 2">
-                    </li>               
-                  </ul>
+                  <mat-card>
+
+                    <ul class="list-group">
+                      <li class="list-group">
+                        <input type="text" class="form-control" formControlName="observacionTelefono1"  placeholder="Observacion Telefono 1">                      
+                      </li>
+                      <hr>
+                      <li class="list-group">                     
+                        <input type="text" class="form-control" formControlName="observacionTelefono2"  placeholder="Observacion Telefono 2">
+                      </li>               
+                    </ul>
+                  </mat-card>
                   <!-- <mat-accordion>
                     <mat-expansion-panel hideToggle>
                       <mat-expansion-panel-header>
@@ -90,37 +99,46 @@
               
               <br>
               <div class="row">
-                <div class="form-group col-sm-6 col-md-5 col-lg-4 col-xl-3 " >
+                <!-- <div class="form-group col-sm-6 col-md-5 col-lg-4 col-xl-3 " >
                   <label for="inputObservacionTelefono2">Observacion Telefono 2</label>
-                  <input type="text" class="form-control" id="inputObservacionTelefono2" placeholder="____________">
-                </div>
-                <div class="form-group col-sm-6 col-md-2 col-lg-2 col-xl-1 ">
+                  <input type="text" class="" formControlName="" id="inputObservacionTelefono2" placeholder="____________">
+                </div> -->
+                <div class="form-group col-sm-6 col-md-6 col-lg-2 col-xl-2 ">
+    
                   <label for="inputNumeroCheque">N°Cheque</label>
-                  <input type="text" class="form-control" id="inputNumeroCheque" placeholder="____________">
+                  <input type="text" class="form-control" formControlName="numeroCheque" id="inputNumeroCheque" placeholder="____________">
                 </div>
-                <div class="form-group col-sm-6 col-md-2 col-lg-2 col-xl-1 " >
+                <div class="form-group col-sm-6 col-md-6 col-lg-2 col-xl-2 " >
+          
                   <label for="inputMonto">Monto</label>
-                  <input type="text" class="form-control" id="inputMonto" placeholder="____________">
+                  <input type="text" class="form-control" formControlName="monto" id="inputMonto" placeholder="____________">
                 </div>
-                <div class="form-group col-sm-6 col-md-2 col-lg-3 col-xl-2 ">
-                  <label for="inputFechaCheque">datepiker Fecha Cheque</label>
-                  <input type="text" class="form-control" id="inputFechaCheque" placeholder="____________">
-                </div>
-                <div class="form-group col-sm-6 col-md-7 col-lg-6 col-xl-5 ">
-                  <label for="inputObservacionDeLaConsulta">Observacion de la inputConsulta</label>
-                  <input type="text" class="form-control" id="inputObservacionDeLaConsulta" placeholder="____________">
-                </div>
+                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
+            
+                  <label for="inputObservacionDeLaConsulta">Observacion de la Consulta</label>
+                  <input type="text" class="form-control" formControlName="observacionConsulta" id="inputObservacionDeLaConsulta" placeholder="____________">
+                </div>                             
+                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 ">  
+                  <div>
+                    <mat-form-field appearance="fill" [formGroup]="fecha" >
+                      <mat-label>Fecha Cheque</mat-label>
+                      <input class="tamanio" matInput formControlName="fechaCheque" [matDatepicker]="fechaCheque" class="col-sm-6 col-md-6 col-lg-6 col-xl-3">                   
+                      <mat-datepicker-toggle matSuffix [for]="fechaCheque"></mat-datepicker-toggle>
+                      <mat-datepicker #fechaCheque></mat-datepicker>
+                    </mat-form-field>                      
+                  </div>           
+                  </div>          
               </div>
 
               <br>
               <div class="row">
                 <div class="form-group col-sm-6 col-md-3 col-lg-2 col-xl-1 " >
                   <br>
-                  <button mat-button class="btn btn-primary">Agregar Cheque</button>
+                  <button mat-button class="btn colorTabla btn-primary">Agregar Cheque</button>
                 </div>
                 <div class="form-group col-sm-6 col-md-3 col-lg-2 col-xl-1 ">
                   <br>
-                  <button mat-button class="btn btn-primary botonBordeIzquierda ">Respuesta RUT</button>
+                  <button mat-button class="btn btn-primary colorTabla botonBordeIzquierda ">Respuesta RUT</button>
                 </div>                
               </div>
 
@@ -170,7 +188,7 @@
                   <br>
                   <mat-card>
                     <ul class="list-group">
-                      <li class="list-group-item active textoCentrado">Estado Cliente</li>
+                      <li class="list-group-item colorTabla text-white textoCentrado">Estado Cliente</li>
                       <li class="list-group-item">Cliente: </li>
                       <li class="list-group-item">Direccion: </li>
                       <li class="list-group-item">Ciudad: </li>
@@ -181,18 +199,20 @@
               </div>
 
               <div class="row">
+             
                 <div class="col-sm-6 col-md-3 col-lg-2 col-xl-1 " >
                   <br>
-                  <button mat-button class="btn btn-primary">Garantizar</button>
+                  <button  mat-raised-button class="colorTabla btn btn-primary">Garantizar</button>
                 </div>
+                                           
                 <div class="col-sm-6 col-md-3 col-lg-2 col-xl-1 ">
                   <br>
-                  <button mat-button class="btn btn-primary botonBordeIzquierda2" >Eliminar</button>
+                  <button mat-button class="btn btn-primary colorTabla botonBordeIzquierda2" >Eliminar</button>
                 </div> 
                 <div class="col-sm-6 col-md-3 col-lg-2 col-xl-1" >
                   <br>
-                  <button mat-button class="btn btn-primary botonBordeIzquierda4 ">Nueva Consulta</button>
-                </div>                               
+                  <button mat-button class="colorTabla btn btn-primary botonBordeIzquierda4 ">Nueva Consulta</button>
+                </div>
               </div>
 
               <br>
@@ -200,20 +220,20 @@
                 
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-4 " >
                   <label for="inputBanco">Banco</label>
-                  <input type="text" class="form-control" id="inputBanco" placeholder="____________">
+                  <input type="text" class="form-control" formControlName="inputBanco" id="inputBanco" placeholder="____________">
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-4 ">
                   <label for="inputRubroComercio">Rubro Comercio</label>
-                  <input type="text" class="form-control" id="inputRubroComercio" placeholder="____________">
+                  <input type="text" class="form-control" formControlName="rubroComercio" id="inputRubroComercio" placeholder="____________">
                 </div>
               </div>
               
             </form>
       </mat-card>
     </div>
-    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-5">
       <mat-card>
-        <form (ngSubmit)="buscar()" autocomplete="off" >
+        <!-- <form (ngSubmit)="buscar()" autocomplete="off" >
           <input type="text"
                  name="termino"
                  class="form-control"
@@ -230,16 +250,16 @@
               <th class="text-light" scope="col">Cantidad Protesto</th>
             </tr>
           </thead>
-          <tbody  >
+          <tbody *ngFor="let item of datos" >
             <tr >              
-              <td> </td>
+              <td> {{ item.name.common }} </td>
               <td></td>
               <td></td>
               <td></td>
               <td></td>
             </tr>            
           </tbody>
-        </table>
+        </table> -->
       </mat-card>
     </div>
   </div>

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokeapi, Poke } from '../../Interfaces/interface';
 import { ConsultaService } from '../../service/consulta.service';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { Country } from '../../Interfaces/interface';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-formulario',
@@ -26,53 +29,68 @@ import { ActivatedRoute } from '@angular/router';
 
 }
 
+
+
   `
-  ]
+  ],
+  
 })
 export class FormularioComponent implements OnInit {
 
-  datos: Pokeapi[] = [];
-  muestraDatos!: Pokeapi[];
+  datos: Country[] = [];
   termino!: string;
 
+
+  fecha = new FormGroup({
+    fechaCheque: new FormControl()    
+  });
+
+  
+
+  consultaCheque: FormGroup = this.fb.group({
+    observacion: '',
+    estadoClave: '',
+    numeroConsulta: '',
+    claveCliente:'',
+    banco: '',
+    cuentaCorriente: '',
+    montoCompra: '',
+    rutGirador: '',
+    titular: '',
+    fonoReferencia1: '',
+    fonoReferencia2: '',
+    observacionTelefono1: '',
+    observacionTelefono2: '', 
+    numeroCheque: '',
+    monto: '', 
+    observacionConsulta: '',
+    inputBanco: '',
+    rubroComercio: '',
+    fechaCheque: '',
+
+  })
+
   constructor( private datosService: ConsultaService,
-               private activateRoute: ActivatedRoute ) { }
+               private activateRoute: ActivatedRoute,
+               private fb: FormBuilder ) { }
 
   ngOnInit(): void {
+  
 
-    this.muestra();
 
-    
-    
   }
+
+
+  
 
   buscar(){
     console.log(this.termino)
-    this.datosService.getBuscador(this.termino)
+    this.datosService.buscarPais(this.termino)
       .subscribe( (resp) => {
+        this.datos = resp;
         console.log(resp)
       })
   }
 
-  muestra(){
- 
-    this.datosService.getDatos()
-    .subscribe(datos => {
-      this.datos = datos     
-      console.log('datos: ', this.datos)
-    })
-
-    this.datosService.getDatos2()  
-    .subscribe((datos) => {
-     console.log(datos);
-
-    this.muestraDatos = datos;
-    console.log(this.muestraDatos)
-
-    //console.log('Muestra Datos: ', this.muestraDatos)
-    })
-
   
-  } 
-
 }

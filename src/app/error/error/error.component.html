@@ -1,9 +1,26 @@
-<div>
-    <div>
-        <!-- <button class="btn center position-relative"
-         [routerLink]="['/home]"> Volver</button> -->
-        <a href="/home"><img src="assets/404error.jpg" class="w-100"></a>
 
+<div class="container-fluid fondo">
+    <div class="row">
+      <div class="col-sm-4 col-md-2 col-lg-2 col-xl-1">
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-7">
+        <img src="assets/error404.jpg" class="w-100 E404">
     </div>
-
+    <div class="col-sm-4 col-md-2 col-lg-2 col-xl-3">  
+        <div class="center">
+            
+            <mat-card> 
+                <h2>La pagina a la que intenta acceder no existe.</h2>
+                <h2>Por favor, vuelva al inicio</h2>
+                <button  mat-raised-button color="primary" [routerLink]="['/home']" class="botoncito" > Volver Al Menu </button>   
+            </mat-card>
+           
+        </div>
+    </div>
+      <div class="col-sm-4 col-md-2 col-lg-2 col-xl-2">     
+      </div>
+    </div>
 </div>
+
+
+

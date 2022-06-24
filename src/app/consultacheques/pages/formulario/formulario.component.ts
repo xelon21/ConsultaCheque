@@ -4,6 +4,7 @@ import { map, switchMap, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Country } from '../../Interfaces/interface';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 
@@ -81,6 +82,22 @@ export class FormularioComponent implements OnInit {
   }
 
 
+  detalle(){
+   
+Swal.fire({
+  title: 'Esta Persona posee 50 mil protestos',
+  showClass: {
+    popup: 'animate__animated animate__fadeInDown'
+  },
+  hideClass: {
+    popup: 'animate__animated animate__fadeOutUp'
+  }
+})
+  }
+
+  cliente() {
+    Swal.fire('Cliente: No hay cliente')
+  }
   
 
   buscar(){

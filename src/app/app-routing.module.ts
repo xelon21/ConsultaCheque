@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './error/error/error.component';
+import { WardGuard } from './guards/ward.guard';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [

@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { Dialog1Component } from './dialogs/dialog1/dialog1.component';
 
 
 
@@ -19,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,    
     ErrorComponent, 
-    HomeComponent
+    HomeComponent, Dialog1Component
   ],
   imports: [
     BrowserModule,

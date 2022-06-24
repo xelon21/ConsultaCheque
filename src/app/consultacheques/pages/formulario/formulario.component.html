@@ -78,31 +78,14 @@
                       </li>               
                     </ul>
                   </mat-card>
-                  <!-- <mat-accordion>
-                    <mat-expansion-panel hideToggle>
-                      <mat-expansion-panel-header>
-                        <mat-panel-title>
-                        Observacion Telefono
-                        </mat-panel-title>
-                        <mat-panel-description>
-                         
-                        </mat-panel-description>
-                      </mat-expansion-panel-header>                     
-                      <input type="text" class="form-control"  placeholder="Observacion Telefono 1">
-                      <br>
-                      <input type="text" class="form-control"  placeholder="Observacion Telefono 2">
-                    </mat-expansion-panel>
-                  </mat-accordion> -->
+                  
                   
                 </div>               
               </div>
               
               <br>
               <div class="row">
-                <!-- <div class="form-group col-sm-6 col-md-5 col-lg-4 col-xl-3 " >
-                  <label for="inputObservacionTelefono2">Observacion Telefono 2</label>
-                  <input type="text" class="" formControlName="" id="inputObservacionTelefono2" placeholder="____________">
-                </div> -->
+               
                 <div class="form-group col-sm-6 col-md-6 col-lg-2 col-xl-2 ">
     
                   <label for="inputNumeroCheque">N°Cheque</label>
@@ -146,42 +129,47 @@
                 <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
                   <br>
                   <mat-card>
-                    <table class="table">
+                    <table class="table table-bordered table-hover">
                       <thead class="colorTabla ">
                         <tr>
                           <th class="text-light" scope="col">N° cheque</th>
                           <th class="text-light" scope="col">Fecha</th>
                           <th class="text-light" scope="col">Monto</th>
-                          <th class="text-light" scope="col">Handle</th>
+                          <th class="text-light" scope="col">Protesto</th>
+                          <th class="text-light" scope="col">Cantidad Protesto</th>   
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
+                      <tbody (click)="detalle()">
+                        <tr >              
+                          <td> 2161261 </td>
+                          <td> 20/10/2022</td>
+                          <td> 60000</td>
+                          <td> No</td>
+                          <td> 0</td>
+                        </tr>     
+                        <tr >              
+                          <td> 21651212 </td>
+                          <td> 25/10/2022</td>
+                          <td> 40000</td>
+                          <td> Si</td>
+                          <td> 50</td>
+                        </tr>     
+                        <tr >              
+                          <td> 21651212 </td>
+                          <td> 25/10/2022</td>
+                          <td> 40000</td>
+                          <td> Si</td>
+                          <td> 50</td>
+                        </tr>           
+                        <tr >              
+                          <td> 21651212 </td>
+                          <td> 25/10/2022</td>
+                          <td> 40000</td>
+                          <td> Si</td>
+                          <td> 50</td>
+                        </tr>    
                       </tbody>
-                    </table>
+                    </table> 
                   </mat-card>
                 </div>
                 <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
@@ -189,10 +177,10 @@
                   <mat-card>
                     <ul class="list-group">
                       <li class="list-group-item colorTabla text-white textoCentrado">Estado Cliente</li>
-                      <li class="list-group-item">Cliente: </li>
-                      <li class="list-group-item">Direccion: </li>
-                      <li class="list-group-item">Ciudad: </li>
-                      <li class="list-group-item">Telefono: </li>
+                      <li class="list-group-item list-group-item-action" (click)="cliente()">Cliente: </li>
+                      <li class="list-group-item list-group-item-action">Direccion: </li>
+                      <li class="list-group-item list-group-item-action">Ciudad: </li>
+                      <li class="list-group-item list-group-item-action">Telefono: </li>
                     </ul>
                   </mat-card>
                 </div>
@@ -232,6 +220,7 @@
       </mat-card>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-5">
+    
       <mat-card>
         <!-- <form (ngSubmit)="buscar()" autocomplete="off" >
           <input type="text"
@@ -239,7 +228,7 @@
                  class="form-control"
                  [(ngModel)]="termino"
                  placeholder="buscador">
-        </form>
+        </form>-->
         <table class="table table-bordered table-hover">
           <thead class="colorTabla ">
             <tr>
@@ -247,24 +236,51 @@
               <th class="text-light" scope="col">Fecha</th>
               <th class="text-light" scope="col">Monto</th>
               <th class="text-light" scope="col">Protesto</th>
-              <th class="text-light" scope="col">Cantidad Protesto</th>
+              <th class="text-light" scope="col">Cantidad Protesto</th>   
             </tr>
           </thead>
-          <tbody *ngFor="let item of datos" >
+          <tbody (click)="detalle()">
             <tr >              
-              <td> {{ item.name.common }} </td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td> 2161261 </td>
+              <td> 20/10/2022</td>
+              <td> 60000</td>
+              <td> No</td>
+              <td> 0</td>
+            </tr>     
+            <tr >              
+              <td> 21651212 </td>
+              <td> 25/10/2022</td>
+              <td> 40000</td>
+              <td> Si</td>
+              <td> 50</td>
             </tr>            
           </tbody>
-        </table> -->
+        </table> 
       </mat-card>
-    </div>
+      </div>
   </div>
 </div>
 
-<!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-  <mat-card ></mat-card>
-</div> -->
+
+
+
+<!-- <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                        Observacion Telefono
+                        </mat-panel-title>
+                        <mat-panel-description>
+                         
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>                     
+                      <input type="text" class="form-control"  placeholder="Observacion Telefono 1">
+                      <br>
+                      <input type="text" class="form-control"  placeholder="Observacion Telefono 2">
+                    </mat-expansion-panel>
+                  </mat-accordion> -->
+
+                   <!-- <div class="form-group col-sm-6 col-md-5 col-lg-4 col-xl-3 " >
+                  <label for="inputObservacionTelefono2">Observacion Telefono 2</label>
+                  <input type="text" class="" formControlName="" id="inputObservacionTelefono2" placeholder="____________">
+                </div> -->

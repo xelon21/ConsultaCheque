@@ -5,12 +5,25 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './error.component.html',
   styles: [`
   .center{
-    width: 6vw;
+    margin-top: 20vw;  
+    width: 20vw;    
+    height: 5vw;    
+  } 
+  .botoncito{
     background-color: grey;
     color: white;
-    height: 2vw;
+    width: 10vw;
+  }
+  
+  .fondo {
+    background-color: #F5F5F5;
+    height: 50vw;
+  }
+  
+  .E404{
+    margin-top: 5vw; 
     
-  }  
+  }
   `
   ]
 })

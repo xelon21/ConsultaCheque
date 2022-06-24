@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { of } from "rxjs";
 import { Observable } from "rxjs/internal/Observable";
 import { tap } from 'rxjs/operators';
 import { Country } from "../Interfaces/interface";
@@ -28,5 +29,10 @@ import { Country } from "../Interfaces/interface";
         return this.http.get<Country[]>( url, {params: this.httpParams} );
                   
       }
+
+    validaIngresoGuard() {
+         return of(true)
+    }
+
 
   }

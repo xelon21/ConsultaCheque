@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Country } from '../../Interfaces/interface';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
+import {MatDialog} from '@angular/material/dialog';
+import { Dialog1Component } from '../../../dialogs/dialog1/dialog1.component';
 
 
 
@@ -13,8 +15,13 @@ import Swal from 'sweetalert2';
   templateUrl: './formulario.component.html',
   styles: [`
 
+.altito{
+  margin-bottom: 1.5vw;
+}
+
 .botonBordeIzquierda{
     margin-left: 5vw;
+    margin-bottom: 1.5vw;
 }
 .colorTabla {
     background-color: #3D5AFE;
@@ -30,6 +37,13 @@ import Swal from 'sweetalert2';
 
 }
 
+.modal-backdrop {
+  z-index: -1;
+}
+
+.tamanio{
+  width: 17vw;
+}
 
 
   `
@@ -72,6 +86,7 @@ export class FormularioComponent implements OnInit {
   })
 
   constructor( private datosService: ConsultaService,
+               private dialog: MatDialog,
                private activateRoute: ActivatedRoute,
                private fb: FormBuilder ) { }
 
@@ -79,6 +94,14 @@ export class FormularioComponent implements OnInit {
   
 
 
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(Dialog1Component);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 
@@ -98,7 +121,26 @@ Swal.fire({
   cliente() {
     Swal.fire('Cliente: No hay cliente')
   }
+
+  agregarCheque(){
+    Swal.fire('Debe ingresar datos')
+  }
+
+  respuestaRut(){
+    Swal.fire('No hay rut en el sistema')
+  }
+
+  garantizar() {
+    Swal.fire('Garantizado')
+  }
   
+  eliminar() {
+    Swal.fire('Eliminado el cheque')
+  }
+
+  nuevaConsulta(){
+    Swal.fire('Se genera nueva consulta......')
+  }
 
   buscar(){
     console.log(this.termino)

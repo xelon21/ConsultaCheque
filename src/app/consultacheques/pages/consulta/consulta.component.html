@@ -1,9 +1,275 @@
-<div class="container-fluid"> 
+
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
-        <mat-card>
-            <button mat-raised-button color="primary"> Ingresar </button>
-        </mat-card>
+      <mat-toolbar>
+        <h1>Consulta de Cheques</h1>
+      </mat-toolbar>
+      <mat-card >
+          <form [formGroup]="consultaCheque">
+            <br>
+              <div class="row">
+                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-4 " >
+                  <label for="inputObservacion">Observacion</label>
+                  <input type="text" class="form-control" formControlName="observacion"  id="inputObservacion" placeholder="Este cheque esta sin fondos">
+                </div>
+                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-4 ">
+                  <label for="estadoClave">Estado Clave</label>
+                  <input type="text" class="form-control" formControlName="estadoClave" id="estadoClave" placeholder="____________">
+                </div>
+              </div>
+
+             <br>
+              <div class="row">
+                <div class="form-group col-sm-6 col-md-4 col-lg-2 col-xl-2 " >
+                  <label for="inputConsutla">N° Consulta</label>
+                  <input type="text" class="form-control" formControlName="numeroConsulta" id="inputConsulta" placeholder="____________">
+                </div>
+                <div class="form-group col-sm-6 col-md-4 col-lg-2 col-xl-2 ">
+                  <label for="inputclaveCliente">Clave Cliente</label>
+                  <input type="text" class="form-control" formControlName="claveCliente" id="inputclaveCliente" placeholder="---------------">
+                </div>
+                <div class="form-group col-sm-6 col-md-2 col-lg-1 col-xl-1 " >
+                  <label for="inputBanco">Banco</label>
+                  <input type="text" class="form-control" formControlName="banco" id="inputBanco" placeholder="____________">
+                </div>
+                <div class="form-group col-sm-6 col-md-4 col-lg-2 col-xl-2 ">
+                  <label for="inputCuentaCorriente">Cnta Corriente</label>
+                  <input type="text" class="form-control" formControlName="cuentaCorriente" id="inputCuentaCorriente" placeholder="---------------">
+                </div>
+                <div class="form-group col-sm-6 col-md-4 col-lg-2 col-xl-3 " >
+                  <label for="inputMontoCompra">Monto de Compra</label>
+                  <input type="text" class="form-control" formControlName="montoCompra" id="inputMontoCompra" placeholder="____________">
+                </div>
+                <div class="form-group col-sm-6 col-md-4 col-lg-2 col-xl-2 ">
+                  <label for="inputRutGirador">Rut Girador</label>
+                  <input type="text" class="form-control" formControlName="rutGirador" id="inputRutGirador" placeholder="---------------">
+                </div>
+              </div>
+              
+              <br>
+              <div class="row">
+                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-3 " >
+                  <label for="inputTitular">Titular</label>
+                  <input type="text" class="form-control" formControlName="titular" id="inputTitular" placeholder="____________">
+                </div>
+                <div class="form-group col-sm-6 col-md-4 col-lg-4 col-xl-5 ">
+                  <mat-card>
+                    <ul class="list-group">
+                      <li class="list-group">
+                        <input type="text" class="form-control"formControlName="fonoReferencia1" placeholder="Fono Referencia">
+                      </li>                    
+                      <hr>
+                      <li class="list-group">                 
+                    <input type="text" class="form-control" formControlName="fonoReferencia2" placeholder="Fono Referencia2">
+                      </li>               
+                    </ul>
+                    
+                  </mat-card>
+                  
+                </div>
+                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 " >
+                  <mat-card>
+
+                    <ul class="list-group">
+                      <li class="list-group">
+                        <input type="text" class="form-control"  formControlName="observacionTelefono1"  placeholder="Observacion Telefono 1">                      
+                      </li>
+                      <hr>
+                      <li class="list-group">                     
+                        <input type="text" class="form-control" formControlName="observacionTelefono2"  placeholder="Observacion Telefono 2">
+                      </li>               
+                    </ul>
+                  </mat-card>
+                  
+                  
+                </div>               
+              </div>
+              
+              <br>
+              <div class="row">
+               
+                <div class="form-group col-sm-6 col-md-6 col-lg-2 col-xl-2 ">
+    
+                  <label for="inputNumeroCheque">N°Cheque</label>
+                  <input type="text" class="form-control" formControlName="numeroCheque" id="inputNumeroCheque" placeholder="____________">
+                </div>
+                <div class="form-group col-sm-6 col-md-6 col-lg-2 col-xl-2 " >
+          
+                  <label for="inputMonto">Monto</label>
+                  <input type="text" class="form-control" formControlName="monto" id="inputMonto" placeholder="____________">
+                </div>
+                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
+            
+                  <label for="inputObservacionDeLaConsulta">Observacion de la Consulta</label>
+                  <input type="text" class="form-control" formControlName="observacionConsulta" id="inputObservacionDeLaConsulta" placeholder="____________">
+                </div>                             
+                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 ">  
+                  <div>
+                    <mat-form-field class="tamanio" appearance="fill" [formGroup]="fecha" >
+                      <mat-label>Fecha Cheque</mat-label>
+                      <input matInput formControlName="fechaCheque" [matDatepicker]="fechaCheque" class="col-sm-6 col-md-6 col-lg-6 col-xl-3">                   
+                      <mat-datepicker-toggle matSuffix [for]="fechaCheque"></mat-datepicker-toggle>
+                      <mat-datepicker #fechaCheque></mat-datepicker>
+                    </mat-form-field>                      
+                  </div>           
+                  </div>          
+              </div>
+
+              <br>
+              <div class="row">
+                <mat-toolbar>
+                  <div class="form-group col-sm-6 col-md-3 col-lg-2 col-xl-2 " >
+                    <br>
+                    <button mat-button (click)="agregarCheque()" class="btn colorTabla btn-primary altito">Agregar Cheque</button>
+                  </div>
+                  <div class="form-group col-sm-6 col-md-3 col-lg-2 col-xl-2 ">
+                    <br>
+                    <button mat-button (click)="respuestaRut()" class="btn btn-primary colorTabla botonBordeIzquierda ">Respuesta RUT</button>
+                  </div>                
+                </mat-toolbar>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-7 " >
+                  <br>
+                  <mat-card class="table-responsive">
+                    <table class="table table-bordered table-hover ">
+                      <thead class="colorTabla ">
+                        <tr>
+                          <th class="text-light" scope="col">N° cheque</th>
+                          <th class="text-light" scope="col">Fecha</th>
+                          <th class="text-light" scope="col">Monto</th>
+                          <th class="text-light" scope="col">Protesto</th>
+                          <th class="text-light" scope="col">Cantidad Protesto</th>   
+                        </tr>
+                      </thead>
+                      <tbody (click)="detalle()">
+                        <tr >              
+                          <td> 2161261 </td>
+                          <td> 20/10/2022</td>
+                          <td> 60000</td>
+                          <td> No</td>
+                          <td> 0</td>
+                        </tr>     
+                        <tr >              
+                          <td> 21651212 </td>
+                          <td> 25/10/2022</td>
+                          <td> 40000</td>
+                          <td> Si</td>
+                          <td> 50</td>
+                        </tr>     
+                        <tr >              
+                          <td> 21651212 </td>
+                          <td> 25/10/2022</td>
+                          <td> 40000</td>
+                          <td> Si</td>
+                          <td> 50</td>
+                        </tr>           
+                        <tr >              
+                          <td> 21651212 </td>
+                          <td> 25/10/2022</td>
+                          <td> 40000</td>
+                          <td> Si</td>
+                          <td> 50</td>
+                        </tr>    
+                      </tbody>
+                    </table> 
+                  </mat-card>
+                </div>
+                <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-5 " >
+                  <br>
+                  <mat-card>
+                    <ul class="list-group">
+                      <li class="list-group-item colorTabla text-white textoCentrado">Estado Cliente</li>
+                      <li class="list-group-item list-group-item-action" (click)="cliente()">Cliente: </li>
+                      <li class="list-group-item list-group-item-action">Direccion: </li>
+                      <li class="list-group-item list-group-item-action">Ciudad: </li>
+                      <li class="list-group-item list-group-item-action">Telefono: </li>
+                    </ul>
+                  </mat-card>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+          
+                <mat-toolbar>
+
+                  <div class="col-sm-6 col-md-3 col-lg-2 col-xl-2 " >
+                    <br>
+                    <button  mat-raised-button (click)="garantizar()" class="colorTabla btn btn-primary altito">Garantizar</button>
+                  </div>
+                                             
+                  <div class="col-sm-6 col-md-3 col-lg-2 col-xl-2 ">
+                    <br>
+                    <button mat-button (click)="eliminar()" class="btn btn-primary colorTabla botonBordeIzquierda2 altito" >Eliminar</button>
+                  </div> 
+                  <div class="col-sm-6 col-md-3 col-lg-2 col-xl-2" >
+                    <br>
+                    <button mat-button (click)="nuevaConsulta()" class="colorTabla btn btn-primary botonBordeIzquierda4 altito">Nueva Consulta</button>
+                  </div>
+                </mat-toolbar>
+              </div>
+
+              <br>
+              <div class="row">
+                
+                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-4 " >
+                  <label for="inputBanco">Banco</label>
+                  <input type="text" class="form-control" formControlName="inputBanco" id="inputBanco" placeholder="____________">
+                </div>
+                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-4 ">
+                  <label for="inputRubroComercio">Rubro Comercio</label>
+                  <input type="text" class="form-control" formControlName="rubroComercio" id="inputRubroComercio" placeholder="____________">
+                </div>
+              </div>
+              
+            </form>
+      </mat-card>
     </div>
-   </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-5">
+    <mat-toolbar>
+        <h1>Resumen</h1>
+        <button mat-button (click)="openDialog()" class="colorTabla btn btn-primary botonBordeIzquierda4 " >Ver Mas Detalle</button>
+    </mat-toolbar>
+      <mat-card>
+        <!-- <form (ngSubmit)="buscar()" autocomplete="off" >
+          <input type="text"
+                 name="termino"
+                 class="form-control"
+                 [(ngModel)]="termino"
+                 placeholder="buscador">
+        </form>-->
+        <table class="table table-bordered table-hover">
+          <thead class="colorTabla ">
+            <tr>
+              <th class="text-light" scope="col">N° cheque</th>
+              <th class="text-light" scope="col">Fecha</th>
+              <th class="text-light" scope="col">Monto</th>
+              <th class="text-light" scope="col">Protesto</th>
+              <th class="text-light" scope="col">Cantidad Protesto</th>   
+            </tr>
+          </thead>
+          <tbody (click)="detalle()">
+            <tr >              
+              <td> 2161261 </td>
+              <td> 20/10/2022</td>
+              <td> 60000</td>
+              <td> No</td>
+              <td> 0</td>
+            </tr>     
+            <tr >              
+              <td> 21651212 </td>
+              <td> 25/10/2022</td>
+              <td> 40000</td>
+              <td> Si</td>
+              <td> 50</td>
+            </tr>            
+          </tbody>
+        </table> 
+      </mat-card>
+
+     
 </div>
+       
+    

@@ -1,10 +1,22 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Dialog1Component } from 'src/app/dialogs/dialog1/dialog1.component';
 import Swal from 'sweetalert2';
+import { Cliente } from '../../Interfaces/consutlaCheques.interface';
 import { ConsultaService } from '../../service/consulta.service';
+import { DialogObservacionComponent } from '../../../dialogs/dialog-observacion/dialog-observacion.component';
+import { DialogEstadoClienteComponent } from '../../../dialogs/dialog-estado-cliente/dialog-estado-cliente.component';
+
+export interface DialogData {
+  protesto: 'Si' | 'No' ;
+  chequesValidados: '150' | '1' | '10';
+  chequesNoValidos: '64' | '5' | '0';
+  morosidad: 'alta'| 'media' | 'baja'; 
+  cliente: 'SalmonStack' | 'Kyo Verduleria' | 'Zapato Constructora';
+}
 
 @Component({
   selector: 'app-consulta',
@@ -18,13 +30,24 @@ import { ConsultaService } from '../../service/consulta.service';
     margin-left: 5vw;
     margin-bottom: 1.5vw;
 }
-.colorTabla {
-    background-color: #3D5AFE;
+
+
+.aprobado {
+    background-color: #00BC37;
+    
+}
+
+.rechazado {
+    background-color: #F0220E;
     
 }
 .botonBordeIzquierda2{
   margin-left: 2vw;
+}
 
+.colorTabla {
+    background-color: #3D5AFE;
+    
 }
 
 .botonBordeIzquierda4{
@@ -37,21 +60,26 @@ import { ConsultaService } from '../../service/consulta.service';
 }
 
 .tamanio{
-  width: 17vw;
+  width: 23vw;
 }
   `
   ]
 })
 export class ConsultaComponent implements OnInit {
 
-  
+  tabla1: boolean = false;
+
 
   termino!: string;
+
+  clientex: Cliente[] = [];
 
 
   fecha = new FormGroup({
     fechaCheque: new FormControl()    
   });
+
+  
 
   
 
@@ -78,26 +106,46 @@ export class ConsultaComponent implements OnInit {
 
   })
 
-  constructor( private datosService: ConsultaService,
+  constructor( private datosService: ConsultaService,    
     private dialog: MatDialog,
     private activateRoute: ActivatedRoute,
     private fb: FormBuilder ) { }
 
 
   ngOnInit(): void {
+
+    this.datosService.mostrarclientes()
+      .subscribe( datos => {
+        this.clientex = datos;
+      })
+
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(Dialog1Component);
+  openDialog(  ) {    
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    this.dialog.open(Dialog1Component, {
+      data: this.clientex ,
     });
+
+
+    // this.dialog.open(Dialog1Component);
+
+    // const dialogRef = this.dialog.open(Dialog1Component);
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
+  }
+
+  detalleCliente() {
+    this.dialog.open(DialogEstadoClienteComponent)
   }
 
 
   detalle(){
-   
+  
+    this.tabla1 = true;
+    
   Swal.fire({
   title: 'Esta Persona posee 50 mil protestos',
   showClass: {
@@ -106,7 +154,18 @@ export class ConsultaComponent implements OnInit {
   hideClass: {
     popup: 'animate__animated animate__fadeOutUp'
   }
+
+  
 })
+  }
+
+  agregarObservacion() {
+    
+    this.dialog.open(DialogObservacionComponent, {
+      data: this.clientex ,
+    });
+    
+
   }
 
   cliente() {

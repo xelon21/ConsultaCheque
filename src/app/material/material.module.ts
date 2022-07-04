@@ -14,6 +14,9 @@ import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_F
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 
@@ -30,6 +33,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatFormFieldModule,
     MatInputModule, 
     MatDialogModule,
+    MatDividerModule,
+    MatTabsModule,
+    MatBadgeModule,
     CommonModule
  ],
  providers: [

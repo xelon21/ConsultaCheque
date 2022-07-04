@@ -9,6 +9,8 @@ import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Dialog1Component } from './dialogs/dialog1/dialog1.component';
+import { DialogObservacionComponent } from './dialogs/dialog-observacion/dialog-observacion.component';
+import { DialogEstadoClienteComponent } from './dialogs/dialog-estado-cliente/dialog-estado-cliente.component';
 
 
 
@@ -20,7 +22,10 @@ import { Dialog1Component } from './dialogs/dialog1/dialog1.component';
   declarations: [
     AppComponent,    
     ErrorComponent, 
-    HomeComponent, Dialog1Component
+    HomeComponent,
+    Dialog1Component,
+    DialogObservacionComponent,
+    DialogEstadoClienteComponent
   ],
   imports: [
     BrowserModule,

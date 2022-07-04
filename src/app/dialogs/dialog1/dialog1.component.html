@@ -1,2 +1,98 @@
-<h1>Este cliente es muy moroso, lleva 100 cheques sin pagar</h1>
-<h3>Es demasiado arriesgado garantizarle un cheque</h3>
+<div class="tamanioVentana table-responsive" >
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Listado De Cheques Consultados"> 
+      <mat-toolbar>
+        <h2 mat-dialog-title>Listado de cheques del cliente consultado:</h2>
+      </mat-toolbar>
+      <mat-dialog-content class="mat-typography">
+          <mat-card class="table-responsive">
+              <table class="table table-bordered table-hover ">
+                <thead class="colorTabla ">
+                  <tr>
+                    <th class="text-light" scope="col">Id</th>
+                    <th class="text-light" scope="col">Nombre</th>
+                    <th class="text-light" scope="col">Estado</th>
+                    <th class="text-light" scope="col">Cheques Validados</th>
+                    <th class="text-light" scope="col">Monto</th> 
+                    <th class="text-light" scope="col">Motivo Protesto</th>   
+                    <th class="text-light" scope="col">Observacion</th>     
+                  </tr>
+                </thead>
+                <tbody *ngFor="let dato of data">
+                  <tr>              
+                    <td (click)="detalle()"> {{ dato.idCliente }} </td>
+                    <td> {{ dato.nombre }}</td>
+                    <td> {{ dato.estadoCliente }}</td>
+                    <td> {{ dato.chequesValidados }}</td>
+                    <td> {{ dato.monto }}</td>
+                    <td> {{ dato.motivoProtesto }}</td>
+                    <td> {{ dato.Observacion }}</td>
+                  </tr>          
+                </tbody>
+              </table> 
+            </mat-card>
+        <!-- <h3>Es demasiado arriesgado garantizarle un cheque</h3> -->
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <button mat-raised-button class="btn btn-primary colorTabla" mat-dialog-close>Salir</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Salir 2</button>
+      </mat-dialog-actions>
+      <h1></h1>
+      <h3>El cliente StarBuss No es apto para garantizar </h3>
+    
+  </mat-tab>
+  <mat-tab label="Second">
+    <div class="row">
+    <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12 " >
+      <br>
+      <mat-card class="table-responsive">
+        <table class="table table-bordered table-hover ">
+          <thead class="colorTabla ">
+            <tr>
+              <th class="text-light" scope="col">N° cheque</th>
+              <th class="text-light" scope="col">Fecha</th>
+              <th class="text-light" scope="col">Monto</th>
+              <th class="text-light" scope="col">Protesto</th>
+              <th class="text-light" scope="col">Cantidad Protesto</th>   
+            </tr>
+          </thead>
+          <tbody (click)="detalle()">
+            <tr >              
+              <td> 2161261 </td>
+              <td> 20/10/2022</td>
+              <td> 60000</td>
+              <td> No</td>
+              <td> 0</td>
+            </tr>     
+            <tr >              
+              <td> 21651212 </td>
+              <td> 25/10/2022</td>
+              <td> 40000</td>
+              <td> Si</td>
+              <td> 50</td>
+            </tr>     
+            <tr >              
+              <td> 21651212 </td>
+              <td> 25/10/2022</td>
+              <td> 40000</td>
+              <td> Si</td>
+              <td> 50</td>
+            </tr>           
+            <tr >              
+              <td> 21651212 </td>
+              <td> 25/10/2022</td>
+              <td> 40000</td>
+              <td> Si</td>
+              <td> 50</td>
+            </tr>    
+          </tbody>
+        </table> 
+      </mat-card>
+    </div>
+  </div>                
+  </mat-tab>
+  <mat-tab label="Third">   
+     
+  </mat-tab>
+</mat-tab-group>
+</div>  

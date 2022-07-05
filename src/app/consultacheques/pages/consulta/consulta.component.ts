@@ -69,7 +69,7 @@ export class ConsultaComponent implements OnInit {
 
   tabla1: boolean = false;
 
-
+  alertaObservacion: boolean = true;
   termino!: string;
 
   clientex: Cliente[] = [];
@@ -164,6 +164,8 @@ export class ConsultaComponent implements OnInit {
     this.dialog.open(DialogObservacionComponent, {
       data: this.clientex ,
     });
+
+    this.alertaObservacion = false;
     
 
   }

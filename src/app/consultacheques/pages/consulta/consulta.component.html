@@ -87,16 +87,38 @@
                     </mat-list>
                   </mat-card>
                 </div>
-                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 " >
-                   <mat-list role="list">
-                        <br>
-                        <mat-list-item role="listitem">
-                          <button mat-button (click)="openDialog()" class="colorTabla btn btn-primary ">Ver detalle</button>
-                        </mat-list-item>                  
-                        <mat-list-item role="listitem">                     
-                          <button mat-button (click)="detalleCliente()" class="colorTabla btn btn-primary">Detalle Cliente</button>
-                        </mat-list-item>               
-                      </mat-list>    
+                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 " > 
+                  <mat-list rol="list">
+                    <mat-list-item rol="list-item">
+                      <br>                
+                      <button mat-button (click)="openDialog()" class="colorTabla btn btn-primary ">Ver detalle</button>
+                      <button mat-button (click)="detalleCliente()" class="colorTabla btn btn-primary botonBordeIzquierda2">Detalle Cliente</button>
+                    </mat-list-item>
+                    <br> 
+                        <mat-expansion-panel hideToggle>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Rut asociado a la cuenta
+                            </mat-panel-title>                         
+                          </mat-expansion-panel-header>
+                          <table class="table table-bordered table-hover ">
+                            <thead class="colorTabla ">
+                              <tr>
+                                <th class="text-light" scope="col">Rut</th>
+                                <th class="text-light" scope="col">Digito</th>
+                                <th class="text-light" scope="col">Fecha Ingreso</th>                               
+                              </tr>
+                            </thead>
+                            <tbody (click)="detalle()">
+                              <tr >              
+                                <td> 2161261 </td>
+                                <td> k</td>
+                                <td> 60000</td>                                
+                              </tr>     
+                            </tbody>
+                          </table>                          
+                        </mat-expansion-panel>                               
+                  </mat-list>     
                 </div>               
               </div>
               
@@ -141,7 +163,10 @@
                     <br>
                     <button mat-button (click)="agregarObservacion()" class="btn btn-primary colorTabla botonBordeIzquierda ">Ingresar observacion</button>
                   </div>                
-              <hr>
+              <hr>              
+              <div class="alert alert-danger" role="alert" *ngIf="alertaObservacion">
+                Debe ingresar una obserbacion
+              </div>
               </div>
 
               <div class="row">

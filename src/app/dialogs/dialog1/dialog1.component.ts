@@ -14,8 +14,19 @@ import Swal from 'sweetalert2';
     background-color: #3D5AFE;
     
 }
+
+.aprobado {
+    background-color: #00BC37;
+    
+}
+
+.rechazado {
+    background-color: #F0220E;
+    
+}
 .tamanioVentana{
-  width: 70vw;  
+  width: 70vw;
+  height: 50vw;  
 
 }
   `]

@@ -50,6 +50,15 @@ export interface DialogData {
     
 }
 
+.divGris{
+  height: 6vw;
+}
+
+
+.botoncito{
+  width: 25vw;
+}
+
 .botonBordeIzquierda4{
   margin-left: 3vw;
 
@@ -61,6 +70,7 @@ export interface DialogData {
 
 .tamanio{
   width: 23vw;
+  margin-top: 1.5%;
 }
   `
   ]
@@ -68,6 +78,9 @@ export interface DialogData {
 export class ConsultaComponent implements OnInit {
 
   tabla1: boolean = false;
+
+  contadorObs: boolean = false;
+  cuentaObs: number = 0;
 
   alertaObservacion: boolean = true;
   termino!: string;
@@ -166,6 +179,8 @@ export class ConsultaComponent implements OnInit {
     });
 
     this.alertaObservacion = false;
+    this.contadorObs = true;
+    this.cuentaObs ++;
     
 
   }

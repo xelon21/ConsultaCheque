@@ -15,6 +15,11 @@ import Swal from 'sweetalert2';
     
 }
 
+.consultado {
+  background-color: #CCE5FF;
+}
+
+
 .aprobado {
     background-color: #00BC37;
     

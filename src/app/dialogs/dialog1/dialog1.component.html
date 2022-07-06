@@ -1,11 +1,11 @@
 
+  <mat-dialog-content class="mat-typography">
 <mat-tab-group mat-align-tabs="start">
   <mat-tab label="Observaciones de la cuenta"> 
       <mat-toolbar>
         <h2 mat-dialog-title>Observaciones a la Cuenta </h2>
       </mat-toolbar>
-      <mat-dialog-content class="mat-typography">
-          <mat-card class="table-responsive">
+          <mat-card class="table-responsive tamanioVentana">
               <table class="table table-bordered table-hover ">
                 <thead class="colorTabla ">
                   <tr>
@@ -25,17 +25,10 @@
                     <td> {{ dato.Observacion }}</td>
                   </tr>          
                 </tbody>
-              </table> 
+              </table>               
             </mat-card>
         <!-- <h3>Es demasiado arriesgado garantizarle un cheque</h3> -->
-      </mat-dialog-content>
-      <mat-dialog-actions align="end">
-        <button mat-raised-button class="btn btn-primary colorTabla" mat-dialog-close>Salir</button>
-        <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Salir 2</button>
-      </mat-dialog-actions>
-      <h1></h1>
-      <h3>El cliente StarBuss No es apto para garantizar </h3>
-    
+   
   </mat-tab>
   <mat-tab label="Cuenta con O.N.P">
     <mat-toolbar>
@@ -165,9 +158,9 @@
             </thead>
             <tbody (click)="detalle()">
               <tr >              
-                <td> $11.562.010 </td>
-                <td> $10.015.565 </td>
-                <td> $1.546.445 </td>           
+                <td class="consultado" >$11.562.010</td>                 
+                <td style="background-color: #D4EDDA;"> $10.015.565 </td>
+                <td style="background-color: #F8D7DA;"> $1.546.445 </td>           
               </tr>
             </tbody>
           </table>
@@ -176,4 +169,9 @@
     </div>                     
   </mat-tab>
 </mat-tab-group>
+</mat-dialog-content>     
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="btn btn-primary colorTabla" mat-dialog-close>Salir</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Salir 2</button>
+</mat-dialog-actions>
 

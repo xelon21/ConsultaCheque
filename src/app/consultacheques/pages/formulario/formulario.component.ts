@@ -27,6 +27,7 @@ import { Dialog1Component } from '../../../dialogs/dialog1/dialog1.component';
     background-color: #3D5AFE;
     
 }
+
 .botonBordeIzquierda2{
   margin-left: 2vw;
 

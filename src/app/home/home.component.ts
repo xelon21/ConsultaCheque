@@ -15,6 +15,9 @@ import { Component, OnInit } from '@angular/core';
 .espicono{
   margin-left: 0.5vw;
 }
+.colorDiv {
+  background: #ffffff9f;
+}
 
 .diametro{
   width: 6vw;

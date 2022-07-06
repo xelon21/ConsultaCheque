@@ -17,6 +17,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 
@@ -36,6 +38,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatDividerModule,
     MatTabsModule,
     MatBadgeModule,
+    MatTooltipModule,
     CommonModule
  ],
  providers: [

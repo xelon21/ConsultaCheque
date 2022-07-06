@@ -7,9 +7,13 @@
 
 :root {
     --primary: #000015a6;
-    --light: #ffffff;
+    --light: #ffffff9f;
     --grey: #efefef;
-    --navbar: #00001552;
+    --navbar: #e0060669;
+}
+
+.colorDiv {
+  background-color: #ffffff9f;
 }
 
 body {
@@ -30,6 +34,9 @@ body {
 .textoCentrado {
     text-align: center;
 }
+.colorDiv {
+    background-color: #303F9F;
+  }
 
 
 .bg-primary {
@@ -50,7 +57,7 @@ a:hover{
 }
 
 #sidebar-container {
-    min-height: 100vh;   
+    min-height: 100vh;  
      
 }
 
@@ -71,4 +78,4 @@ a:hover{
     cursor: pointer;
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}

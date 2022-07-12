@@ -44,17 +44,24 @@
                   <label for="inputTitular">Titular</label>
                   <input type="text" class="form-control" formControlName="titular" id="inputTitular" placeholder="SalmonStack">
                 </div>  
-                  <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 " >
-                    <label for="inputRutGirador">Rut Girador</label>
-                    <input type="text" class="form-control" formControlName="rutGirador" id="inputRutGirador" placeholder="80.458.321-k">
-                  </div>
-                  <div class="form-group col-sm-6 col-md-4 col-lg-4 col-xl-4 " >
+                  <div class="form-group col-sm-2 col-md-2 col-lg-2 col-xl-1" >
+                    <label for="inputRutGirador">Rut Girador</label>                 
+                      <input type="text" class="form-control" formControlName="rutGirador" id="inputRutGirador" placeholder="80.351.245"> 
+                    </div>                     
+                    <div class="form-group col-sm-1 col-md-1 col-lg-1 col-xl-1" >                                
+                      <br>
+                        <input type="text" class="form-control inputPequeno" formControlName="rutVerificador" id="inputVerificaRut" placeholder="k"
+                        ng-model="inputdata" 
+                        ng-keydown="$event.keyCode === 13 && searchItem()">
+                      </div>
+                    
+                  <div class="form-group col-sm-6 col-md-4 col-lg-3 col-xl-3 " >
                     <label for="inputMontoCompra">Monto de Compra</label>
                     <input type="text" class="form-control" formControlName="montoCompra" id="inputMontoCompra" placeholder="10000">
                   </div>  
                 </div>
-                  
-              <div class="row">
+                  <br>
+              <div class="row bordes">
                 <div class="form-group col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
                   <br>
                   <mat-card class="alert alert-dark">
@@ -90,8 +97,8 @@
                   <mat-card class=" alert alert-dark">
                     <mat-list rol="list">
                       <mat-list-item rol="list-item">
-                        <button mat-button (click)="openDialog()" class="colorTabla btn btn-primary">Ver detalle</button>
-                        <button mat-button (click)="detalleCliente()" class="colorTabla btn btn-primary botonBordeIzquierda2">Detalle Cliente</button>
+                        <button mat-button (click)="openDialog()" class="colorTabla btn btn-primary" style="width: 13vw; margin-left: -3%;">Ver detalle</button>
+                        <button mat-button (click)="detalleCliente()" class="colorTabla btn btn-primary" style="width: 15vw; margin-left: 4%;">Detalle Cliente</button>
                       </mat-list-item>
                       <mat-divider></mat-divider>                      
                           <mat-expansion-panel hideToggle>
@@ -127,7 +134,7 @@
               
               
               <br>
-              <div class="row">
+              <div class="row ">
                
                 <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
     
@@ -153,7 +160,7 @@
               </div>
 
               <br>
-              <div class="row alert alert-dark"  role="alert">
+              <div class="row bordes"  role="alert">
                 <div class="form-group col-sm-6 col-md-3 col-lg-4 col-xl-4" >
                     <br>   
                    <button mat-button (click)="agregarCheque()" class="btn colorTabla btn-primary altito botoncito">Agregar Cheque</button>
@@ -176,10 +183,10 @@
             </div>
               </div>
               <hr>              
-              <div class="row alert alert-dark">
+              <div class="row bordes">
                 <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12 " >
                   <br>
-                  <mat-card class="table-responsive alert alert-primary">
+                  <!-- <mat-card class="table-responsive alert alert-primary"> -->
                     <table class="table table-bordered table-hover " style="background-color: white;">
                       <thead class="colorTabla ">
                         <tr>
@@ -191,7 +198,7 @@
                         </tr>
                       </thead>
                       <tbody (click)="detalle()">
-                        <tr >              
+                        <tr>              
                           <td> 2161261 </td>
                           <td> 20/10/2022</td>
                           <td> 60000</td>
@@ -221,11 +228,11 @@
                         </tr>    
                       </tbody>
                     </table> 
-                  </mat-card>
+                  <!-- </mat-card> -->
                 </div>                
               </div>
          <hr>
-              <div class="row alert alert-dark"  role="alert">          
+              <div class="row bordes"  role="alert">          
                 <div class="col-sm-6 col-md-3 col-lg-4 col-xl-4 " >
                     <br>  
                     <button  mat-raised-button (click)="garantizar()" class="colorTabla btn btn-primary altito botoncito">Garantizar</button>
@@ -244,11 +251,11 @@
               <div class="row divGris">                
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6 card alert alert-dark" >
                   <br>
-                  <h1>Banco: <small> Banco del desarrollo monetario</small>  </h1>                
+                  <h1>Banco: <small class="bordes"> Banco del desarrollo monetario</small>  </h1>                
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6 card alert alert-dark">
                   <br>
-                  <h1>Rubro Comercio: <small> Agricultura/pesca </small>  </h1>
+                  <h1 >Rubro Comercio: <small class="bordes"> Agricultura/pesca </small>  </h1>
                 </div>
               </div>              
             </form>

@@ -31,6 +31,13 @@ export interface DialogData {
     margin-bottom: 1.5vw;
 }
 
+.inputPequeno{
+  width: 4vw;
+  margin-left: -20%;
+}
+.bordes {
+  border-style: groove;
+}
 
 .aprobado {
     background-color: #00BC37;
@@ -172,11 +179,25 @@ export class ConsultaComponent implements OnInit {
 })
   }
 
-  agregarObservacion() {
+   async agregarObservacion() {
+
+    const { value: text } = await Swal.fire({
+      input: 'textarea',
+      inputLabel: 'Ingrese Su Observacion',
+      inputPlaceholder: '',
+      inputAttributes: {
+        'aria-label': 'Type your message here'
+      },
+      showCancelButton: true
+    })
     
-    this.dialog.open(DialogObservacionComponent, {
-      data: this.clientex ,
-    });
+    if (text) {
+      Swal.fire(text)
+    }
+    
+    // this.dialog.open(DialogObservacionComponent, {
+    //   data: this.clientex ,
+    // });
 
     this.alertaObservacion = false;
     this.contadorObs = true;

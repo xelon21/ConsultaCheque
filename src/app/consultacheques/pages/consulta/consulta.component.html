@@ -1,21 +1,25 @@
 
-<div class="container-fluid ">
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <mat-toolbar>
         <h1>Consulta de Cheques</h1>
       </mat-toolbar>
       <mat-card class="alert alert-secondary">
-          <form [formGroup]="consultaCheque">
+          <form [formGroup]="consultaCheque" (ngSubmit)="agregarCheque()">
             <br>
               <div class="row">
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-5 " >
                   <label for="inputObservacion">Observacion</label>
-                  <input type="text" class="form-control" formControlName="observacion"  id="inputObservacion" placeholder="Este cheque esta sin fondos" >
+                  <input type="text" class="form-control form-control-sm" formControlName="observacion"  id="inputObservacion" placeholder="Este cheque esta sin fondos" required>
+                   <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">Debe ingresar una observacion</div>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-5 ">
                   <label for="estadoClave">Estado Clave</label>
-                  <input type="text" class="form-control" formControlName="estadoClave" id="estadoClave" placeholder="Activa">
+                  <input type="text" class="form-control form-control-sm" formControlName="estadoClave" id="estadoClave" placeholder="Activa" required>
+                   <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">estado clave</div>
                 </div>
               </div>
 
@@ -23,115 +27,88 @@
               <div class="row">
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 " >
                   <label for="inputConsutla">N° Consulta</label>
-                  <input type="text" class="form-control" formControlName="numeroConsulta" id="inputConsulta" placeholder="N° 5468543">
+                  <input type="number" class="form-control form-control-sm" formControlName="numeroConsulta" id="inputConsulta" placeholder="N° 5468543" required>
+                   <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">Debe ingresar un numero de consulta</div>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 ">
                   <label for="inputclaveCliente">Clave Cliente</label>
-                  <input type="text" class="form-control" formControlName="claveCliente" id="inputclaveCliente" placeholder="274585">
+                  <input type="number" class="form-control form-control-sm" formControlName="claveCliente" id="inputclaveCliente" placeholder="274585" required>
+                   <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">Debe ingresar una clave de cliente</div>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-2 col-xl-2 " >
                   <label for="inputBanco">Banco</label>
-                  <input type="text" class="form-control" formControlName="banco" id="inputBanco" placeholder="76">
+                  <input type="number" class="form-control form-control-sm" formControlName="banco" id="inputBanco" placeholder="76" required>
+                   <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">Debe ingresar un banco</div>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 ">
                   <label for="inputCuentaCorriente">Cnta Corriente</label>
-                  <input type="text" class="form-control" formControlName="cuentaCorriente" id="inputCuentaCorriente" placeholder="000-5483845">
+                  <input type="number" class="form-control form-control-sm" formControlName="cuentaCorriente" id="inputCuentaCorriente" placeholder="000-5483845" required>
+                   <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">Este campo es obligatorio</div>
                 </div>                            
               </div>
              <br>
               <div class="row">
                 <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 " >
                   <label for="inputTitular">Titular</label>
-                  <input type="text" class="form-control" formControlName="titular" id="inputTitular" placeholder="SalmonStack">
+                  <input type="text" class="form-control form-control-sm" formControlName="titular" id="inputTitular" placeholder="SalmonStack" required>
+                   <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">Campo Obligatorio</div>
                 </div>  
-                  <div class="form-group col-sm-2 col-md-2 col-lg-2 col-xl-1" >
-                    <label for="inputRutGirador">Rut Girador</label>                 
-                      <input type="text" class="form-control" formControlName="rutGirador" id="inputRutGirador" placeholder="80.351.245"> 
-                    </div>                     
-                    <div class="form-group col-sm-1 col-md-1 col-lg-1 col-xl-1" >                                
-                      <br>
-                        <input type="text" class="form-control inputPequeno" formControlName="rutVerificador" id="inputVerificaRut" placeholder="k"
-                        ng-model="inputdata" 
-                        ng-keydown="$event.keyCode === 13 && searchItem()">
+                  <div class="form-group col-sm-2 col-md-2 col-lg-2 col-xl-2" >
+                    <!-- <input type="text" formControlName="rut" id="esconder">
+                    <form id="validacion-live"> -->
+                      <div class="control-group">                    
+                        <div class="controls">                        
+                          <label for="rut">Rut Girador</label>
+                          <input formControlName="run" class="form-control form-control-sm" (keyup)="validacionRut()" 
+                                  id="rut" type="text" placeholder="14.569.484-1" autocomplete="off" required />    
+                          <div style="color: red;" *ngIf="esValido">Debe ingresar un rut valido</div>
+                          <div style="color: green;" *ngIf="rutValido">Rut Valido</div>            
+                        </div>
                       </div>
-                    
+                    <!-- </form>                  -->
+                    </div>                   
                   <div class="form-group col-sm-6 col-md-4 col-lg-3 col-xl-3 " >
                     <label for="inputMontoCompra">Monto de Compra</label>
-                    <input type="text" class="form-control" formControlName="montoCompra" id="inputMontoCompra" placeholder="10000">
-                  </div>  
-                </div>
-                  <br>
-              <div class="row bordes">
-                <div class="form-group col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
-                  <br>
-                  <mat-card class="alert alert-dark">
-                    <mat-list role="list" >
-                      <mat-list-item role="listitem">
-                        <input type="text" class="form-control"formControlName="fonoReferencia1" placeholder="Fono Referencia">
-                      </mat-list-item>                    
-                      <mat-divider></mat-divider>
-                      <mat-list-item role="listitem">                 
-                    <input type="text" class="form-control" formControlName="fonoReferencia2" placeholder="Fono Referencia2">
-                      </mat-list-item>               
-                    </mat-list>                                        
-                  </mat-card>
+                    <input type="number" class="form-control form-control-sm" formControlName="montoCompra" id="inputMontoCompra" placeholder="10000" required>
+                     <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Campo Obligatorio</div>
+                  </div> 
                   
+                  <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-3 ">
+                          
+                  </div>
                 </div>
-                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 " >
-                 <br>
-                <mat-card class="alert alert-dark">
-                    <mat-list role="list">
-                      <mat-list-item role="listitem">                      
-                        <input type="text" class="form-control"  formControlName="observacionTelefono1"  placeholder="Observacion Telefono 1">                      
-                      </mat-list-item>    
-                      <mat-divider></mat-divider>               
-                      <mat-list-item role="listitem">                     
-                        <input type="text" class="form-control" formControlName="observacionTelefono2"  placeholder="Observacion Telefono 2">
-                      </mat-list-item>               
-                    </mat-list>
-                  </mat-card>
+                  <br>
+              <div class="row">
+                <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-4 " >
+                  <label for="inputConsutla">Telefono 1
+                  </label>
+                  <input type="number" class="form-control form-control-sm" formControlName="numeroConsulta" id="inputConsulta" placeholder="N° 5468543" required>
+                   <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">Campo Obligatorio</div>
                 </div>
-             
-                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 " > 
-                            <br>    
-                  <mat-card class=" alert alert-dark">
+                <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-4 " >
+                  <label for="inputConsutla">telefono 2</label>
+                  <input type="number" class="form-control form-control-sm" formControlName="numeroConsulta" id="inputConsulta" placeholder="N° 5468543" required>
+                   <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">Campo Obligatorio</div>
+                </div>                
+               
+                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 bordes " > 
+                      
                     <mat-list rol="list">
                       <mat-list-item rol="list-item">
                         <button mat-button (click)="openDialog()" class="colorTabla btn btn-primary" style="width: 13vw; margin-left: -3%;">Ver detalle</button>
                         <button mat-button (click)="detalleCliente()" class="colorTabla btn btn-primary" style="width: 15vw; margin-left: 4%;">Detalle Cliente</button>
-                      </mat-list-item>
-                      <mat-divider></mat-divider>                      
-                          <mat-expansion-panel hideToggle>
-                            <mat-expansion-panel-header>
-                              <mat-panel-title>
-                                Rut asociado a la cuenta <mat-icon #tooltip="matTooltip"
-                                matTooltip="Desplegar Contenido"
-                                matTooltipPosition="below">keyboard_arrow_down</mat-icon>
-                              </mat-panel-title>                         
-                            </mat-expansion-panel-header>
-                            <table class="table table-bordered table-hover ">
-                              <thead class="colorTabla ">
-                                <tr>
-                                  <th class="text-light" scope="col">Rut</th>
-                                  <th class="text-light" scope="col">Digito</th>
-                                  <th class="text-light" scope="col">Fecha Ingreso</th>                               
-                                </tr>
-                              </thead>
-                              <tbody (click)="detalle()">
-                                <tr >              
-                                  <td> 2161261 </td>
-                                  <td> k</td>
-                                  <td> 60000</td>                                
-                                </tr>     
-                              </tbody>
-                            </table>                          
-                          </mat-expansion-panel>                               
-                    </mat-list>     
-
-                  </mat-card>
+                      </mat-list-item>          
+                    </mat-list>    
                 </div>               
               </div>
-              
               
               <br>
               <div class="row ">
@@ -139,13 +116,16 @@
                 <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
     
                   <label for="inputNumeroCheque">N°Cheque</label>
-                  <input type="text" class="form-control" formControlName="numeroCheque" id="inputNumeroCheque" placeholder="325216584">
+                  <input type="number" class="form-control form-control-sm" formControlName="numeroCheque" id="inputNumeroCheque" placeholder="325216584" required>
+                   <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">Campo Obligatorio</div>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 " >
-          
-                  <label for="inputMonto">Monto</label>
-                  <input type="text" class="form-control" formControlName="monto" id="inputMonto" placeholder="10000">
-                </div>                                  
+                  <label for="inputNumeroCheque">Monto</label>
+                  <input type="number" class="form-control form-control-sm" formControlName="numeroCheque" id="inputMonto" placeholder="325216584" required>
+                   <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">Campo Obligatorio</div>
+                </div>                
                 <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-4 "> 
     
                   <div>
@@ -154,7 +134,9 @@
                       <input matInput formControlName="fechaCheque" [matDatepicker]="fechaCheque" class="col-sm-6 col-md-6 col-lg-6 col-xl-3">                   
                       <mat-datepicker-toggle matSuffix [for]="fechaCheque"></mat-datepicker-toggle>
                       <mat-datepicker #fechaCheque></mat-datepicker>
-                    </mat-form-field>                      
+                    </mat-form-field>         
+                     <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Campo Obligatorio</div>             
                   </div>           
                   </div>          
               </div>
@@ -184,7 +166,7 @@
               </div>
               <hr>              
               <div class="row bordes">
-                <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12 " >
+                <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
                   <br>
                   <!-- <mat-card class="table-responsive alert alert-primary"> -->
                     <table class="table table-bordered table-hover " style="background-color: white;">
@@ -230,6 +212,34 @@
                     </table> 
                   <!-- </mat-card> -->
                 </div>                
+                <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
+                  <br>
+                  <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Representante Legal<mat-icon #tooltip="matTooltip"
+                        matTooltip="Desplegar Representante"
+                        matTooltipPosition="below">keyboard_arrow_down</mat-icon>
+                      </mat-panel-title>                         
+                    </mat-expansion-panel-header>
+                    <table class="table table-bordered table-hover ">
+                      <thead class="colorTabla ">
+                        <tr>
+                          <th class="text-light" scope="col">Nombre</th>
+                          <th class="text-light" scope="col">Telefono</th>
+                          <th class="text-light" scope="col">Otro dato</th>                               
+                        </tr>
+                      </thead>
+                      <tbody (click)="detalle()">
+                        <tr >              
+                          <td> 2161261 </td>
+                          <td> k</td>
+                          <td> 60000</td>                                
+                        </tr>     
+                      </tbody>
+                    </table>                          
+                  </mat-expansion-panel> 
+                </div>
               </div>
          <hr>
               <div class="row bordes"  role="alert">          
@@ -247,21 +257,61 @@
                   </div>           
               </div>
               <hr>
-              <br>
-              <div class="row divGris">                
-                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6 card alert alert-dark" >
-                  <br>
-                  <h1>Banco: <small class="bordes"> Banco del desarrollo monetario</small>  </h1>                
-                </div>
-                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6 card alert alert-dark">
-                  <br>
-                  <h1 >Rubro Comercio: <small class="bordes"> Agricultura/pesca </small>  </h1>
-                </div>
-              </div>              
+              <br>          
             </form>
       </mat-card>    
     </div>
-    
+    <!-- <script>
+
+      function checkRut(rut) {
+      // Despejar Puntos
+      var valor = rut.value.replace('.','');
+      // Despejar Guión
+      valor = valor.replace('-','');
+      
+      // Aislar Cuerpo y Dígito Verificador
+      cuerpo = valor.slice(0,-1);
+      dv = valor.slice(-1).toUpperCase();
+      
+      // Formatear RUN
+      rut.value = cuerpo + '-'+ dv
+      
+      // Si no cumple con el mínimo ej. (n.nnn.nnn)
+      if(cuerpo.length < 7) { rut.setCustomValidity("RUT Incompleto"); return false;}
+      
+      // Calcular Dígito Verificador
+      suma = 0;
+      multiplo = 2;
+      
+      
+      // Para cada dígito del Cuerpo
+      for(i=1;i<=cuerpo.length;i++) {
+      
+          // Obtener su Producto con el Múltiplo Correspondiente
+          index = multiplo * valor.charAt(cuerpo.length - i);
+          
+          // Sumar al Contador General
+          suma = suma + index;
+          
+          // Consolidar Múltiplo dentro del rango [2,7]
+          if(multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
+
+      }
+      
+      // Calcular Dígito Verificador en base al Módulo 11
+      dvEsperado = 11 - (suma % 11);
+      
+      // Casos Especiales (0 y K)
+      dv = (dv == 'K')?10:dv;
+      dv = (dv == 0)?11:dv;
+      
+      // Validar que el Cuerpo coincide con su Dígito Verificador
+      if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
+      
+      // Si todo sale bien, eliminar errores (decretar que es válido)
+      rut.setCustomValidity('');
+};
+    </script> -->
+  
+
    
-       
-    

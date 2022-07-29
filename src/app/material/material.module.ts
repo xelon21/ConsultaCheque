@@ -38,7 +38,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatDividerModule,
     MatTabsModule,
     MatBadgeModule,
-    MatTooltipModule,
+    MatTooltipModule,    
     CommonModule
  ],
  providers: [

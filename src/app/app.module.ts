@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { CargaScriptsService } from './carga-scripts.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error/error.component';
@@ -14,27 +15,25 @@ import { DialogEstadoClienteComponent } from './dialogs/dialog-estado-cliente/di
 
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,    
-    ErrorComponent, 
     HomeComponent,
+    ErrorComponent, 
     Dialog1Component,
     DialogObservacionComponent,
-    DialogEstadoClienteComponent
+    DialogEstadoClienteComponent,    
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    CargaScriptsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

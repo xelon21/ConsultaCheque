@@ -1,14 +1,16 @@
  <div class="d-flex colorDiv">
   <mat-sidenav-container fullscreen >
     <mat-sidenav #sidenav mode="push">
-        <mat-toolbar [color]="">      
-           <img src="../../../../assets/favicon.png">
-            <span class="espicono"></span>      
-            <span class="whiteText">Servicio Incomer</span>
-            <span class="spacer"></span>
+        <mat-toolbar [color]="">
+       
+
+          <img src="../../../../assets/favicon.png">
+           <span class="espicono"></span>      
+           <span style="color: white;">Servicio Incomer</span>
+           <span class="spacer"></span>       
             <button mat-icon-button
                     (click)="sidenav.toggle()">   
-                    <mat-icon class="whiteText">arrow_right_alt</mat-icon>                    
+                    <mat-icon style="color: white;">arrow_right_alt</mat-icon>                    
             </button>            
         </mat-toolbar>
         <mat-nav-list>
@@ -26,6 +28,7 @@
             </a>          
      
         </mat-nav-list>
+        
     </mat-sidenav>
     <mat-toolbar color="primary">
         <button mat-icon-button
@@ -40,10 +43,13 @@
         <button mat-button>
             Logout
         </button>
+        
     </mat-toolbar>
+
     <div class=""> 
         <router-outlet></router-outlet>
     </div>
+    <h1></h1>
   </mat-sidenav-container>
 </div>
 

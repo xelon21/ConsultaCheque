@@ -17,7 +17,7 @@ export class WardGuard implements CanActivate, CanLoad {
             .pipe( 
               tap( valid => {
                 if(!valid) {
-                  this.router.navigateByUrl('/formulario')
+                  this.router.navigateByUrl('/consulta')
                 } 
               })
             );
@@ -27,7 +27,7 @@ export class WardGuard implements CanActivate, CanLoad {
               .pipe( 
                 tap( valid => {
                   if(!valid) {
-                    this.router.navigateByUrl('/formulario')
+                    this.router.navigateByUrl('/consulta')
                   }
                 })
               );

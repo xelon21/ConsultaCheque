@@ -11,11 +11,10 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [      
-      { path: 'consulta', component: ConsultaComponent },
-      { path: 'formulario', component: FormularioComponent,
+      { path: 'consulta', component: ConsultaComponent,
       canActivate: [WardGuard],
-      canLoad: [WardGuard]
-     },
+      canLoad: [WardGuard] },
+      { path: 'formulario', component: FormularioComponent },
       
       { path: '**', redirectTo: 'consulta'}
     ]

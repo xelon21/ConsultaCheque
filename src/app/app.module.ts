@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Dialog1Component } from './dialogs/dialog1/dialog1.component';
 import { DialogObservacionComponent } from './dialogs/dialog-observacion/dialog-observacion.component';
 import { DialogEstadoClienteComponent } from './dialogs/dialog-estado-cliente/dialog-estado-cliente.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -29,7 +30,8 @@ import { DialogEstadoClienteComponent } from './dialogs/dialog-estado-cliente/di
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     CargaScriptsService

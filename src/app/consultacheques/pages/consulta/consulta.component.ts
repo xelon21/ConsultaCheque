@@ -1,5 +1,5 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -94,57 +94,49 @@ export interface DialogData {
 })
 export class ConsultaComponent implements OnInit {
 
-  
-
   tabla1: boolean = false;
 
   contadorObs: boolean = false;
   cuentaObs: number = 0;
 
   alertaObservacion: boolean = true;
-  termino!: string;
 
   clientex: Cliente[] = [];
-
-
+  
+  rExpresion = "([0-9.-]*)([k]?)";
+  obs: string = '';
+  
   fecha = new FormGroup({
     fechaCheque: new FormControl()    
   });
 
 
+
+
   consultaCheque: FormGroup = this.fb.group({
-    observacion: ['',[Validators.required, Validators.maxLength(12)]],
-    estadoClave: ['',[Validators.required]],
-    numeroConsulta: [0,[Validators.required]],
-    claveCliente:[0,[Validators.required]],
-    banco: [0,[Validators.required]],
-    cuentaCorriente: [0,[Validators.required]],
-    montoCompra: [0,[Validators.required]],
-    run: [ '', [ Validators.required, Validators.pattern("^[0-9]+[k]"), Validators.maxLength(12) ] ],
-    titular:  ['',[Validators.required]],
-    fonoReferencia1: [0,[Validators.required]],
-    fonoReferencia2: [0,[Validators.required]],
-    numeroCheque: [0,[Validators.required]],
-    monto: [0,[Validators.required]],
-    observacionConsulta:  ['',[Validators.required]],
-    inputBanco: [0,[Validators.required]],
-    rubroComercio:  ['',[Validators.required]],
-    fechaCheque:  ['',[Validators.required]],
+    observacion: ['',[Validators.maxLength(200),Validators.minLength(10), Validators.required ]],
+    estadoClave: ['',[Validators.required, Validators.minLength(4)]],
+    numeroConsulta: [0,[Validators.required, Validators.minLength(4)]],
+    claveCliente:['',[Validators.required, Validators.minLength(4)]],
+    banco: [0,[Validators.required, Validators.minLength(4)]],
+    cuentaCorriente: [0,[Validators.required, Validators.minLength(4)]],
+    montoCompra: [0,[Validators.required, Validators.minLength(4)]],
+    rutGirador: [ '', [ Validators.required, Validators.pattern(this.rExpresion), Validators.maxLength(13) ] ],
+    titular:  ['',[Validators.required, Validators.minLength(4)]],
+    telefono1: [0,[Validators.required, Validators.minLength(4)]],
+    telefono2: [0,[Validators.required, Validators.minLength(4)]],
+    numeroCheque: [0,[Validators.required, Validators.minLength(4)]],
+    monto: [0,[Validators.required, Validators.minLength(4)]],
+    observacionConsulta:  ['' ,[Validators.required, Validators.minLength(4)]], 
   })
 
   run: string = '';
-  cambioRut: string | number = "";
-  
-  contador: any = "";
-  digito: string = "";
-  numero = 0;
-
+  cambioRut: string | number = "";   
   rutBack2: string | number = "";
-  rExpresion = "^[0-9]+[k]";
+
   esValido: boolean = true;
   rutValido = false;
-
-
+  
 
   constructor( private datosService: ConsultaService,    
     private dialog: MatDialog,
@@ -155,12 +147,6 @@ export class ConsultaComponent implements OnInit {
       carga.Carga(["jquery.rut"])
       
     }
-
-   
-
-    name = 'Jquery Integration With Angular!';  
-     isJqueryWorking: any;  
-
 
   ngOnInit() {     
    
@@ -179,7 +165,7 @@ export class ConsultaComponent implements OnInit {
   }
 
   openDialog(  ) {    
-
+    
     this.dialog.open(Dialog1Component, {
       data: this.clientex ,
     });
@@ -189,7 +175,6 @@ export class ConsultaComponent implements OnInit {
   detalleCliente() {
     this.dialog.open(DialogEstadoClienteComponent)
   }
-
 
   detalle(){  
   
@@ -203,31 +188,25 @@ export class ConsultaComponent implements OnInit {
   hideClass: {
     popup: 'animate__animated animate__fadeOutUp'
   }
-
   
 })
   }
 
-   async agregarObservacion() {
+  agregarObservacion() {
 
-    const { value: text } = await Swal.fire({
-      input: 'textarea',
-      inputLabel: 'Ingrese Su Observacion',
-      inputPlaceholder: '',
-      inputAttributes: {
-        'aria-label': 'Type your message here'
-      },
-      showCancelButton: true
-    })
-    
-    if (text) {
-      Swal.fire('Observacion: ', text)
-    }
- 
-    this.alertaObservacion = false;
-    this.contadorObs = true;
-    this.cuentaObs ++;
-    
+    const dialogRef =  this.dialog.open(DialogObservacionComponent,
+      {
+        width: '450px',
+        data:  this.obs 
+      });
+
+    dialogRef.afterClosed().subscribe( respuesta => {
+        console.log(respuesta)
+        this.obs = respuesta;       
+        console.log( this.obs)
+        this.consultaCheque.controls['observacionConsulta'].setValue(this.obs); 
+        
+    }) 
 
   }
 
@@ -236,7 +215,11 @@ export class ConsultaComponent implements OnInit {
   }
 
   agregarCheque(){
-    Swal.fire('Debe ingresar datos')
+    
+    if(!this.consultaCheque.valid){
+      console.log(this.consultaCheque.value);
+     
+    }
   }
 
   respuestaRut(){
@@ -256,9 +239,9 @@ export class ConsultaComponent implements OnInit {
     
   }
 
-  validacionRut(){ 
+  validacionRut(){  
  
-    switch (this.validarRut(this.consultaCheque.controls['run'].value)) {
+    switch (this.validarRut(this.consultaCheque.controls['rutGirador'].value)) {
       case 0: 
       this.esValido = true;
       this.rutValido = false;

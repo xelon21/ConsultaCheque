@@ -12,14 +12,13 @@
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-5 " >
                   <label for="inputObservacion">Observacion</label>
                   <input type="text" class="form-control form-control-sm" formControlName="observacion"  id="inputObservacion" placeholder="Este cheque esta sin fondos" required>
-                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">Debe ingresar una observacion</div>
+                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['observacion'].errors">Debe ingresar una observacion</span>
+                 
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-5 ">
                   <label for="estadoClave">Estado Clave</label>
-                  <input type="text" class="form-control form-control-sm" formControlName="estadoClave" id="estadoClave" placeholder="Activa" required>
-                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">estado clave</div>
+                  <input type="text" class="form-control form-control-sm" formControlName="estadoClave" id="estadoClave" placeholder="Activa" required>                   
+                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['estadoClave'].errors">Debe ingresar un estado de clave</span>
                 </div>
               </div>
 
@@ -28,26 +27,22 @@
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 " >
                   <label for="inputConsutla">N° Consulta</label>
                   <input type="number" class="form-control form-control-sm" formControlName="numeroConsulta" id="inputConsulta" placeholder="N° 5468543" required>
-                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">Debe ingresar un numero de consulta</div>
+                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['numeroConsulta'].errors">Debe ingresar n° de consulta</span>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 ">
                   <label for="inputclaveCliente">Clave Cliente</label>
-                  <input type="number" class="form-control form-control-sm" formControlName="claveCliente" id="inputclaveCliente" placeholder="274585" required>
-                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">Debe ingresar una clave de cliente</div>
+                  <input type="text" class="form-control form-control-sm" formControlName="claveCliente" id="inputclaveCliente" placeholder="274585" required>
+                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['claveCliente'].errors">Debe ingresar una claveCLiente</span>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-2 col-xl-2 " >
                   <label for="inputBanco">Banco</label>
                   <input type="number" class="form-control form-control-sm" formControlName="banco" id="inputBanco" placeholder="76" required>
-                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">Debe ingresar un banco</div>
+                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['banco'].errors">Debe ingresar un banco</span>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 ">
                   <label for="inputCuentaCorriente">Cnta Corriente</label>
                   <input type="number" class="form-control form-control-sm" formControlName="cuentaCorriente" id="inputCuentaCorriente" placeholder="000-5483845" required>
-                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">Este campo es obligatorio</div>
+                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['cuentaCorriente'].errors">Debe ingresar una cuenta corriente</span>
                 </div>                            
               </div>
              <br>
@@ -55,8 +50,7 @@
                 <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 " >
                   <label for="inputTitular">Titular</label>
                   <input type="text" class="form-control form-control-sm" formControlName="titular" id="inputTitular" placeholder="SalmonStack" required>
-                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">Campo Obligatorio</div>
+                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['titular'].errors">Debe ingresar un titular</span>
                 </div>  
                   <div class="form-group col-sm-2 col-md-2 col-lg-2 col-xl-2" >
                     <!-- <input type="text" formControlName="rut" id="esconder">
@@ -64,10 +58,12 @@
                       <div class="control-group">                    
                         <div class="controls">                        
                           <label for="rut">Rut Girador</label>
-                          <input formControlName="run" class="form-control form-control-sm" (keyup)="validacionRut()" 
-                                  id="rut" type="text" placeholder="14.569.484-1" autocomplete="off" required />    
-                          <div style="color: red;" *ngIf="esValido">Debe ingresar un rut valido</div>
-                          <div style="color: green;" *ngIf="rutValido">Rut Valido</div>            
+                          <input formControlName="rutGirador" class="form-control form-control-sm" (keyup)="validacionRut()" 
+                                  id="rut" type="text" placeholder="14.569.484-1" autocomplete="off" required
+                                  onkeypress="return (event.charCode >= 48 && event.charCode <= 57 || event.charCode == 107)" />
+                                  <!-- <span class="form-text text-danger" *ngIf="consultaCheque.controls['rutGirador'].errors" >Ingrese un rut valido || {{ this.consultaCheque.controls['estadoClave'].valid }}</span>   -->
+                          <div class="form-text text-danger" *ngIf="esValido">Debe ingresar un rut valido</div>
+                          <div class="form-text text-success" *ngIf="rutValido">Rut Valido</div>            
                         </div>
                       </div>
                     <!-- </form>                  -->
@@ -75,8 +71,7 @@
                   <div class="form-group col-sm-6 col-md-4 col-lg-3 col-xl-3 " >
                     <label for="inputMontoCompra">Monto de Compra</label>
                     <input type="number" class="form-control form-control-sm" formControlName="montoCompra" id="inputMontoCompra" placeholder="10000" required>
-                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Campo Obligatorio</div>
+                    <span class="form-text text-danger" *ngIf="consultaCheque.controls['montoCompra'].errors">Debe ingresar un monto de compra</span>
                   </div> 
                   
                   <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-3 ">
@@ -88,15 +83,13 @@
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-4 " >
                   <label for="inputConsutla">Telefono 1
                   </label>
-                  <input type="number" class="form-control form-control-sm" formControlName="numeroConsulta" id="inputConsulta" placeholder="N° 5468543" required>
-                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">Campo Obligatorio</div>
+                  <input type="number" class="form-control form-control-sm" formControlName="telefono1" id="inputTelefono" placeholder="N° 5468543" required>
+                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['telefono1'].errors">Debe ingresar un telefono </span>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-4 " >
                   <label for="inputConsutla">telefono 2</label>
-                  <input type="number" class="form-control form-control-sm" formControlName="numeroConsulta" id="inputConsulta" placeholder="N° 5468543" required>
-                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">Campo Obligatorio</div>
+                  <input type="number" class="form-control form-control-sm" formControlName="telefono2" id="inputTelefono2" placeholder="N° 5468543" required>
+                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['telefono2'].errors">Debe ingresar un telefono 2</span>
                 </div>                
                
                 <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 bordes " > 
@@ -117,14 +110,12 @@
     
                   <label for="inputNumeroCheque">N°Cheque</label>
                   <input type="number" class="form-control form-control-sm" formControlName="numeroCheque" id="inputNumeroCheque" placeholder="325216584" required>
-                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">Campo Obligatorio</div>
+                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['numeroCheque'].errors">Debe ingresar un n° de cheque</span>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 " >
                   <label for="inputNumeroCheque">Monto</label>
-                  <input type="number" class="form-control form-control-sm" formControlName="numeroCheque" id="inputMonto" placeholder="325216584" required>
-                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">Campo Obligatorio</div>
+                  <input type="number" class="form-control form-control-sm" formControlName="monto" id="inputMonto" placeholder="325216584" required>
+                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['monto'].errors">Debe ingresar un monto</span>
                 </div>                
                 <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-4 "> 
     
@@ -135,9 +126,8 @@
                       <mat-datepicker-toggle matSuffix [for]="fechaCheque"></mat-datepicker-toggle>
                       <mat-datepicker #fechaCheque></mat-datepicker>
                     </mat-form-field>         
-                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Campo Obligatorio</div>             
                   </div>           
+                  <span class="form-text text-danger" *ngIf="fecha.controls['fechaCheque'].invalid">Debe ingresar una fecha</span>            
                   </div>          
               </div>
 
@@ -145,7 +135,7 @@
               <div class="row bordes"  role="alert">
                 <div class="form-group col-sm-6 col-md-3 col-lg-4 col-xl-4" >
                     <br>   
-                   <button mat-button (click)="agregarCheque()" class="btn colorTabla btn-primary altito botoncito">Agregar Cheque</button>
+                   <button mat-button (click)="agregarCheque()" class="btn colorTabla btn-primary altito botoncito" [disabled]="consultaCheque.invalid">Agregar Cheque</button>
                   </div>
                   <div class="form-group col-sm-6 col-md-3 col-lg-4 col-xl-4 ">                  
                     <br>

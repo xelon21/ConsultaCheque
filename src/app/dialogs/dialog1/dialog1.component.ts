@@ -38,14 +38,29 @@ import Swal from 'sweetalert2';
 })
 export class Dialog1Component implements OnInit {
 
+
   cliente: Cliente[] = [];
+  spiner: boolean = true;
 
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Cliente[]) { }
 
   ngOnInit(): void {
-  
+
+   // this.spiner = false;
+   this.pruebas();  
+  }
+
+  pruebas(){
+    try {
+      
+      if (this.spiner){
+        this.spiner = false;
+      }
+    } catch (error) {
+      
+    }
   }
 
   detalle() {

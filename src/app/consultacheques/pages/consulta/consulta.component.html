@@ -11,13 +11,13 @@
               <div class="row">
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-5 " >
                   <label for="inputObservacion">Observacion</label>
-                  <input type="text" class="form-control form-control-sm" formControlName="observacion"  id="inputObservacion" placeholder="Este cheque esta sin fondos" required>
+                  <input type="text" class="form-control form-control-sm" formControlName="observacion" autocomplete="off" id="inputObservacion" placeholder="Este cheque esta sin fondos" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['observacion'].errors">Debe ingresar una observacion</span>
                  
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-5 ">
                   <label for="estadoClave">Estado Clave</label>
-                  <input type="text" class="form-control form-control-sm" formControlName="estadoClave" id="estadoClave" placeholder="Activa" required>                   
+                  <input type="text" class="form-control form-control-sm" autocomplete="off"  formControlName="estadoClave" id="estadoClave" placeholder="Activa" required>                   
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['estadoClave'].errors">Debe ingresar un estado de clave</span>
                 </div>
               </div>
@@ -26,22 +26,22 @@
               <div class="row">
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 " >
                   <label for="inputConsutla">N° Consulta</label>
-                  <input type="number" class="form-control form-control-sm" formControlName="numeroConsulta" id="inputConsulta" placeholder="N° 5468543" required>
+                  <input type="number" class="form-control form-control-sm" autocomplete="off"  formControlName="numeroConsulta" id="inputConsulta" placeholder="N° 5468543" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['numeroConsulta'].errors">Debe ingresar n° de consulta</span>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 ">
                   <label for="inputclaveCliente">Clave Cliente</label>
-                  <input type="text" class="form-control form-control-sm" formControlName="claveCliente" id="inputclaveCliente" placeholder="274585" required>
+                  <input type="text" class="form-control form-control-sm" autocomplete="off"  formControlName="claveCliente" id="inputclaveCliente" placeholder="274585" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['claveCliente'].errors">Debe ingresar una claveCLiente</span>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-2 col-xl-2 " >
                   <label for="inputBanco">Banco</label>
-                  <input type="number" class="form-control form-control-sm" formControlName="banco" id="inputBanco" placeholder="76" required>
+                  <input type="number" class="form-control form-control-sm" autocomplete="off"  formControlName="banco" id="inputBanco" placeholder="76" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['banco'].errors">Debe ingresar un banco</span>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 ">
                   <label for="inputCuentaCorriente">Cnta Corriente</label>
-                  <input type="number" class="form-control form-control-sm" formControlName="cuentaCorriente" id="inputCuentaCorriente" placeholder="000-5483845" required>
+                  <input type="number" class="form-control form-control-sm" autocomplete="off"  formControlName="cuentaCorriente" id="inputCuentaCorriente" placeholder="000-5483845" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['cuentaCorriente'].errors">Debe ingresar una cuenta corriente</span>
                 </div>                            
               </div>
@@ -49,7 +49,7 @@
               <div class="row">
                 <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 " >
                   <label for="inputTitular">Titular</label>
-                  <input type="text" class="form-control form-control-sm" formControlName="titular" id="inputTitular" placeholder="SalmonStack" required>
+                  <input type="text" class="form-control form-control-sm" autocomplete="off"  formControlName="titular" id="inputTitular" placeholder="SalmonStack" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['titular'].errors">Debe ingresar un titular</span>
                 </div>  
                   <div class="form-group col-sm-2 col-md-2 col-lg-2 col-xl-2" >
@@ -58,19 +58,21 @@
                       <div class="control-group">                    
                         <div class="controls">                        
                           <label for="rut">Rut Girador</label>
+                          <!-- Tener en cuenta que si esta presionado el BloqDespl no podra escribir la k  -->
                           <input formControlName="rutGirador" class="form-control form-control-sm" (keyup)="validacionRut()" 
                                   id="rut" type="text" placeholder="14.569.484-1" autocomplete="off" required
-                                  onkeypress="return (event.charCode >= 48 && event.charCode <= 57 || event.charCode == 107)" />
+                                  onkeypress="return (event.charCode >= 48 && event.charCode <= 57 || event.charCode == 107)"
+                                  />
                                   <!-- <span class="form-text text-danger" *ngIf="consultaCheque.controls['rutGirador'].errors" >Ingrese un rut valido || {{ this.consultaCheque.controls['estadoClave'].valid }}</span>   -->
                           <div class="form-text text-danger" *ngIf="esValido">Debe ingresar un rut valido</div>
                           <div class="form-text text-success" *ngIf="rutValido">Rut Valido</div>            
                         </div>
                       </div>
-                    <!-- </form>                  -->
+
                     </div>                   
                   <div class="form-group col-sm-6 col-md-4 col-lg-3 col-xl-3 " >
                     <label for="inputMontoCompra">Monto de Compra</label>
-                    <input type="number" class="form-control form-control-sm" formControlName="montoCompra" id="inputMontoCompra" placeholder="10000" required>
+                    <input type="number" class="form-control form-control-sm" autocomplete="off"  formControlName="montoCompra" id="inputMontoCompra" placeholder="10000" required>
                     <span class="form-text text-danger" *ngIf="consultaCheque.controls['montoCompra'].errors">Debe ingresar un monto de compra</span>
                   </div> 
                   
@@ -83,12 +85,12 @@
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-4 " >
                   <label for="inputConsutla">Telefono 1
                   </label>
-                  <input type="number" class="form-control form-control-sm" formControlName="telefono1" id="inputTelefono" placeholder="N° 5468543" required>
+                  <input type="number" class="form-control form-control-sm" autocomplete="off"  formControlName="telefono1" id="inputTelefono" placeholder="N° 5468543" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['telefono1'].errors">Debe ingresar un telefono </span>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-4 " >
                   <label for="inputConsutla">telefono 2</label>
-                  <input type="number" class="form-control form-control-sm" formControlName="telefono2" id="inputTelefono2" placeholder="N° 5468543" required>
+                  <input type="number" class="form-control form-control-sm" autocomplete="off"  formControlName="telefono2" id="inputTelefono2" placeholder="N° 5468543" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['telefono2'].errors">Debe ingresar un telefono 2</span>
                 </div>                
                
@@ -96,10 +98,26 @@
                       
                     <mat-list rol="list">
                       <mat-list-item rol="list-item">
-                        <button mat-button (click)="openDialog()" class="colorTabla btn btn-primary" style="width: 13vw; margin-left: -3%;">Ver detalle</button>
-                        <button mat-button (click)="detalleCliente()" class="colorTabla btn btn-primary" style="width: 15vw; margin-left: 4%;">Detalle Cliente</button>
+                        <button mat-button (click)="openDialog()" [disabled]="detalleCargado === 1" class="colorTabla btn btn-primary" style="width: 13vw; margin-left: -3%;">Ver detalle
+                          <span class="badge badge-dark" style="background-color: green;" *ngIf="detalleCargado === 2" ><mat-icon>done</mat-icon></span>
+                          <span class="badge badge-dark" style="background-color: #F70C00;" *ngIf="detalleCargado === 3" ><mat-icon>close</mat-icon></span>
+                          <span class="badge badge-dark" style="background-color: #FAE00D;" *ngIf="detalleCargado === 4" ><mat-icon style="color: gray">warning_amber</mat-icon></span>
+                        </button> 
+                        <button mat-button (click)="detalleCliente()" [disabled]="detalleCli === 1" class="colorTabla btn btn-primary" style="width: 15vw; margin-left: 4%;">Detalle Cliente
+                          <span class="badge badge-dark" style="background-color: green;" *ngIf="detalleCli === 2" ><mat-icon>done</mat-icon></span>
+                          <span class="badge badge-dark" style="background-color: #F70C00;" *ngIf="detalleCli === 3" ><mat-icon>close</mat-icon></span>
+                          <span class="badge badge-dark" style="background-color: #FAE00D;" *ngIf="detalleCli === 4" ><mat-icon style="color: gray">warning_amber</mat-icon></span>
+                        </button>
                       </mat-list-item>          
                     </mat-list>    
+                    <!-- <ng-template #protesto>
+                      <button mat-button (click)="openDialog()"  class="colorTabla btn btn-primary" style="width: 13vw; margin-left: -3%;">Ver detalle
+                        <span class="badge badge-dark" style="background-color: green;" ><mat-icon>done</mat-icon></span>
+                      </button>
+                      <button mat-button (click)="detalleCliente()" class="colorTabla btn btn-primary" style="width: 15vw; margin-left: 4%;">Detalle Cliente
+                        <span class="badge badge-dark" style="background-color: green;" ><mat-icon>done</mat-icon></span>
+                      </button>
+                    </ng-template> -->
                 </div>               
               </div>
               
@@ -109,12 +127,12 @@
                 <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
     
                   <label for="inputNumeroCheque">N°Cheque</label>
-                  <input type="number" class="form-control form-control-sm" formControlName="numeroCheque" id="inputNumeroCheque" placeholder="325216584" required>
+                  <input type="number" class="form-control form-control-sm" autocomplete="off"  formControlName="numeroCheque" id="inputNumeroCheque" placeholder="325216584" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['numeroCheque'].errors">Debe ingresar un n° de cheque</span>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 " >
                   <label for="inputNumeroCheque">Monto</label>
-                  <input type="number" class="form-control form-control-sm" formControlName="monto" id="inputMonto" placeholder="325216584" required>
+                  <input type="number" class="form-control form-control-sm" autocomplete="off"  formControlName="monto" id="inputMonto" placeholder="325216584" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['monto'].errors">Debe ingresar un monto</span>
                 </div>                
                 <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-4 "> 
@@ -135,16 +153,24 @@
               <div class="row bordes"  role="alert">
                 <div class="form-group col-sm-6 col-md-3 col-lg-4 col-xl-4" >
                     <br>   
-                   <button mat-button (click)="agregarCheque()" class="btn colorTabla btn-primary altito botoncito" [disabled]="consultaCheque.invalid">Agregar Cheque</button>
+                   <button mat-button (click)="agregarCheque()" class="btn colorTabla btn-primary altito botoncito"  [disabled]="consultaCheque.invalid" *ngIf="consultaCheque.invalid; else agregar" >Agregar Cheque</button>
+                  <ng-template #agregar>
+                    <button mat-button (click)="agregarCheque()" class="btn colorTabla btn-primary altito botoncito" style="background-color: green;">Agregar Cheque</button>
+                  </ng-template>
                   </div>
                   <div class="form-group col-sm-6 col-md-3 col-lg-4 col-xl-4 ">                  
                     <br>
-                    <button mat-button (click)="respuestaRut()" class="btn btn-primary colorTabla botonBordeIzquierda2 botoncito">Respuesta RUT</button>
+                    <button mat-button (click)="respuestaRut()" style="background-color: #FFE866; color: grey" class="btn btn-primary botonBordeIzquierda2 botoncito">Respuesta RUT</button>
                   </div>  
                   <div class="form-group col-sm-6 col-md-3 col-lg-4 col-xl-4 ">
                   <br>
-                  <button mat-button (click)="agregarObservacion()" class="btn btn-primary colorTabla botonBordeIzquierda4 botoncito">Ingresar observacion 
-                      <span class="badge badge-dark" style="background-color: red;" *ngIf="contadorObs">{{ cuentaObs }}</span>
+                  <ng-template #obsValido>
+                    <button mat-button (click)="agregarObservacion()"  class="btn btn-primary colorTabla botonBordeIzquierda4 botoncito">Ingresar observacion 
+                      <span class="badge badge-dark" style="background-color: green;" ><mat-icon>done</mat-icon></span>
+                    </button>
+                  </ng-template>                  
+                  <button mat-button (click)="agregarObservacion()" *ngIf="alertaObservacion; else obsValido" style="background-color: #F9534B; color: whitesmoke" class="btn btn-primary colorTabla botonBordeIzquierda4 botoncito">Ingresar observacion 
+                  
                     </button>
                   </div>               
                 </div>
@@ -203,47 +229,56 @@
                   <!-- </mat-card> -->
                 </div>                
                 <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
-                  <br>
-                  <mat-expansion-panel hideToggle>
+                  <br>                 
+                  <mat-expansion-panel style="background-color: #F9534B;" hideToggle *ngIf="representante === 1">                    
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                        Representante Legal<mat-icon #tooltip="matTooltip"
+                        <h3 style="margin-top: 3%; color: whitesmoke;">Representante Legal</h3><mat-icon #tooltip="matTooltip"
                         matTooltip="Desplegar Representante"
                         matTooltipPosition="below">keyboard_arrow_down</mat-icon>
                       </mat-panel-title>                         
-                    </mat-expansion-panel-header>
-                    <table class="table table-bordered table-hover ">
-                      <thead class="colorTabla ">
-                        <tr>
-                          <th class="text-light" scope="col">Nombre</th>
-                          <th class="text-light" scope="col">Telefono</th>
-                          <th class="text-light" scope="col">Otro dato</th>                               
-                        </tr>
-                      </thead>
-                      <tbody (click)="detalle()">
-                        <tr >              
-                          <td> 2161261 </td>
-                          <td> k</td>
-                          <td> 60000</td>                                
-                        </tr>     
-                      </tbody>
-                    </table>                          
-                  </mat-expansion-panel> 
+                    </mat-expansion-panel-header>                                          
+                  </mat-expansion-panel>                 
+                    <mat-expansion-panel hideToggle style="background-color: green;" *ngIf="representante === 2" >                    
+                      <mat-expansion-panel-header >
+                        <mat-panel-title ><h3 style="margin-top: 3%; color:whitesmoke;" class="textoEx">Representante Legal</h3>
+                       <mat-icon #tooltip="matTooltip" 
+                          matTooltip="Desplegar Representante"
+                          matTooltipPosition="below">keyboard_arrow_down</mat-icon>
+                        </mat-panel-title>                         
+                      </mat-expansion-panel-header>
+                      <table class="table table-bordered table-hover " style="background-color: white;">
+                        <thead class="colorTabla ">
+                          <tr>
+                            <th class="text-light" scope="col">Nombre</th>
+                            <th class="text-light" scope="col">Telefono</th>
+                            <th class="text-light" scope="col">Otro dato</th>                               
+                          </tr>
+                        </thead>
+                        <tbody (click)="detalle()">
+                          <tr >              
+                            <td> 2161261 </td>
+                            <td> k</td>
+                            <td> 9999999999</td>                                
+                          </tr>     
+                        </tbody>
+                      </table>                          
+                    </mat-expansion-panel>
                 </div>
               </div>
          <hr>
               <div class="row bordes"  role="alert">          
                 <div class="col-sm-6 col-md-3 col-lg-4 col-xl-4 " >
                     <br>  
-                    <button  mat-raised-button (click)="garantizar()" class="colorTabla btn btn-primary altito botoncito">Garantizar</button>
+                    <button  mat-raised-button (click)="garantizar()" style="background-color: green;" class="colorTabla btn btn-primary altito botoncito">Garantizar</button>
                   </div>
                   <div class="col-sm-6 col-md-3 col-lg-4 col-xl-4 ">
                     <br>    
-                    <button mat-button (click)="eliminar()" class="btn btn-primary colorTabla botonBordeIzquierda2 altito botoncito" >Eliminar</button>
+                    <button mat-button (click)="eliminar()" style="background-color: #F9534B;" class="btn btn-primary colorTabla botonBordeIzquierda2 altito botoncito" >Eliminar</button>
                   </div> 
                   <div class="col-sm-6 col-md-3 col-lg-4 col-xl-4" >
                     <br>
-                    <button mat-button (click)="nuevaConsulta()" class="colorTabla btn btn-primary botonBordeIzquierda4 altito botoncito">Nueva Consulta</button>
+                    <button mat-button (click)="nuevaConsulta()"  class="colorTabla btn btn-primary botonBordeIzquierda4 altito botoncito">Nueva Consulta</button>
                   </div>           
               </div>
               <hr>

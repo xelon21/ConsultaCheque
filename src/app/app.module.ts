@@ -13,6 +13,7 @@ import { Dialog1Component } from './dialogs/dialog1/dialog1.component';
 import { DialogObservacionComponent } from './dialogs/dialog-observacion/dialog-observacion.component';
 import { DialogEstadoClienteComponent } from './dialogs/dialog-estado-cliente/dialog-estado-cliente.component';
 import { FormsModule } from '@angular/forms';
+import { SnipperComponent } from './dialogs/snipper/snipper.component';
 
 
 
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     ErrorComponent, 
     Dialog1Component,
     DialogObservacionComponent,
-    DialogEstadoClienteComponent,    
+    DialogEstadoClienteComponent,
+    SnipperComponent,    
   ],
   imports: [
     BrowserModule,    

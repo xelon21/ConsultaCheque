@@ -18,6 +18,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -38,7 +39,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatDividerModule,
     MatTabsModule,
     MatBadgeModule,
-    MatTooltipModule,    
+    MatTooltipModule,   
+    MatProgressSpinnerModule, 
     CommonModule
  ],
  providers: [

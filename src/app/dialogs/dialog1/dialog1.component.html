@@ -1,111 +1,51 @@
-
   <mat-dialog-content class="mat-typography">
-<mat-tab-group mat-align-tabs="start">
-  <mat-tab label="Observaciones de la cuenta"> 
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Observaciones de la cuenta"> 
+        <mat-toolbar>
+          <h2 mat-dialog-title>Observaciones a la Cuenta </h2>
+        </mat-toolbar>
+            <mat-card class="table-responsive tamanioVentana">
+                <table class="table table-bordered table-hover ">
+                  <thead class="colorTabla ">
+                    <tr>
+                      <th class="text-light" scope="col">Rut</th>
+                      <th class="text-light" scope="col">Fecha</th>
+                      <th class="text-light" scope="col">Codigo</th>
+                      <th class="text-light" scope="col">Descripcion</th>
+                      <th class="text-light" scope="col">Observacion</th>                 
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let dato of data">
+                    <tr>              
+                      <td (click)="detalle()"> {{ dato.idCliente }} </td>
+                      <td> {{ dato.nombre }}</td>
+                      <td> {{ dato.monto }}</td>   
+                      <td> {{ dato.motivoProtesto }}</td>
+                      <td> {{ dato.Observacion }}</td>
+                    </tr>          
+                  </tbody>
+                </table>               
+              </mat-card>
+          <!-- <h3>Es demasiado arriesgado garantizarle un cheque</h3> -->
+     
+    </mat-tab>
+    <mat-tab label="Cuenta con O.N.P">
       <mat-toolbar>
-        <h2 mat-dialog-title>Observaciones a la Cuenta </h2>
+        <h2 mat-dialog-title>Cuentas con Orden de no pago</h2>
       </mat-toolbar>
-          <mat-card class="table-responsive tamanioVentana">
-              <table class="table table-bordered table-hover ">
-                <thead class="colorTabla ">
-                  <tr>
-                    <th class="text-light" scope="col">Rut</th>
-                    <th class="text-light" scope="col">Fecha</th>
-                    <th class="text-light" scope="col">Codigo</th>
-                    <th class="text-light" scope="col">Descripcion</th>
-                    <th class="text-light" scope="col">Observacion</th>                 
-                  </tr>
-                </thead>
-                <tbody *ngFor="let dato of data">
-                  <tr>              
-                    <td (click)="detalle()"> {{ dato.idCliente }} </td>
-                    <td> {{ dato.nombre }}</td>
-                    <td> {{ dato.monto }}</td>   
-                    <td> {{ dato.motivoProtesto }}</td>
-                    <td> {{ dato.Observacion }}</td>
-                  </tr>          
-                </tbody>
-              </table>               
-            </mat-card>
-        <!-- <h3>Es demasiado arriesgado garantizarle un cheque</h3> -->
-   
-  </mat-tab>
-  <mat-tab label="Cuenta con O.N.P">
-    <mat-toolbar>
-      <h2 mat-dialog-title>Cuentas con Orden de no pago</h2>
-    </mat-toolbar>
-    <div class="row">
-    <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12 " >
-      <br>
-      <mat-card class="table-responsive tamanioVentana">
-        <table class="table table-bordered table-hover">
-          <thead class="colorTabla ">
-            <tr>
-              <th class="text-light" scope="col">Ch. Desde</th>
-              <th class="text-light" scope="col">Ch. Hasta</th>
-              <th class="text-light" scope="col">Origen Publ.</th>
-              <th class="text-light" scope="col">Cta. Cte</th>
-              <th class="text-light" scope="col">Feche Ingreso</th>
-              <th class="text-light" scope="col">Motivo</th>   
-            </tr>
-          </thead>
-          <tbody (click)="detalle()">
-            <tr >              
-              <td> 2161261 </td>
-              <td> 20/10/2022</td>
-              <td> 60000</td>
-              <td> No</td>
-              <td> 0</td>
-              <td> Robo</td>
-            </tr>     
-            <tr >              
-              <td> 21651212 </td>
-              <td> 25/10/2022</td>
-              <td> 40000</td>
-              <td> Si</td>
-              <td> 50</td>
-              <td> Robo</td>
-            </tr>     
-            <tr >              
-              <td> 21651212 </td>
-              <td> 25/10/2022</td>
-              <td> 40000</td>
-              <td> Si</td>
-              <td> 50</td>
-              <td> Robo</td>
-            </tr>           
-            <tr >              
-              <td> 21651212 </td>
-              <td> 25/10/2022</td>
-              <td> 40000</td>
-              <td> Si</td>
-              <td> 50</td>
-              <td> Robo</td>
-            </tr>    
-          </tbody>
-        </table> 
-      </mat-card>
-    </div>
-  </div>                
-  </mat-tab>
-  <mat-tab label="Cheques de la cuenta">
-    <mat-toolbar>
-      <h2 mat-dialog-title>Cheques de la cuenta</h2>
-    </mat-toolbar>   
-    <div class="row">
+      <div class="row">
       <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12 " >
         <br>
         <mat-card class="table-responsive tamanioVentana">
           <table class="table table-bordered table-hover">
             <thead class="colorTabla ">
               <tr>
-                <th class="text-light" scope="col">F. Consulta</th>
-                <th class="text-light" scope="col">Rut</th>
-                <th class="text-light" scope="col">Cod. Autorizacion</th>
-                <th class="text-light" scope="col">F. Cheque</th>
-                <th class="text-light" scope="col">Monto</th>
-                <th class="text-light" scope="col">Clave</th>   
-                <th class="text-light" scope="col">Estado</th>
+                <th class="text-light" scope="col">Ch. Desde</th>
+                <th class="text-light" scope="col">Ch. Hasta</th>
+                <th class="text-light" scope="col">Origen Publ.</th>
+                <th class="text-light" scope="col">Cta. Cte</th>
+                <th class="text-light" scope="col">Feche Ingreso</th>
+                <th class="text-light" scope="col">Motivo</th>   
               </tr>
             </thead>
             <tbody (click)="detalle()">
@@ -116,7 +56,6 @@
                 <td> No</td>
                 <td> 0</td>
                 <td> Robo</td>
-                <td> Robo</td>
               </tr>     
               <tr >              
                 <td> 21651212 </td>
@@ -125,7 +64,6 @@
                 <td> Si</td>
                 <td> 50</td>
                 <td> Robo</td>
-                <td> Robo</td>
               </tr>     
               <tr >              
                 <td> 21651212 </td>
@@ -133,7 +71,6 @@
                 <td> 40000</td>
                 <td> Si</td>
                 <td> 50</td>
-                <td> Robo</td>
                 <td> Robo</td>
               </tr>           
               <tr >              
@@ -143,35 +80,98 @@
                 <td> Si</td>
                 <td> 50</td>
                 <td> Robo</td>
-                <td> Robo</td>
               </tr>    
             </tbody>
           </table> 
-          <hr>   
-          <table class="table table-bordered table-hover">
-            <thead class="colorTabla ">
-              <tr>
-                <th class="text-light" scope="col">Consultado</th>
-                <th class="text-light aprobado" scope="col">Aprobado</th>
-                <th class="text-light rechazado" scope="col">Rechazado</th>
-              </tr>
-            </thead>
-            <tbody (click)="detalle()">
-              <tr >              
-                <td class="consultado" >$11.562.010</td>                 
-                <td style="background-color: #D4EDDA;"> $10.015.565 </td>
-                <td style="background-color: #F8D7DA;"> $1.546.445 </td>           
-              </tr>
-            </tbody>
-          </table>
         </mat-card>
       </div>
-    </div>                     
-  </mat-tab>
-</mat-tab-group>
-</mat-dialog-content>     
-<mat-dialog-actions align="end">
-  <button mat-raised-button class="btn btn-primary colorTabla" mat-dialog-close>Salir</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Salir 2</button>
-</mat-dialog-actions>
+    </div>                
+    </mat-tab>
+    <mat-tab label="Cheques de la cuenta">
+      <mat-toolbar>
+        <h2 mat-dialog-title>Cheques de la cuenta</h2>
+      </mat-toolbar>   
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12 " >
+          <br>
+          <mat-card class="table-responsive tamanioVentana">
+            <table class="table table-bordered table-hover">
+              <thead class="colorTabla ">
+                <tr>
+                  <th class="text-light" scope="col">F. Consulta</th>
+                  <th class="text-light" scope="col">Rut</th>
+                  <th class="text-light" scope="col">Cod. Autorizacion</th>
+                  <th class="text-light" scope="col">F. Cheque</th>
+                  <th class="text-light" scope="col">Monto</th>
+                  <th class="text-light" scope="col">Clave</th>   
+                  <th class="text-light" scope="col">Estado</th>
+                </tr>
+              </thead>
+              <tbody (click)="detalle()">
+                <tr >              
+                  <td> 2161261 </td>
+                  <td> 20/10/2022</td>
+                  <td> 60000</td>
+                  <td> No</td>
+                  <td> 0</td>
+                  <td> Robo</td>
+                  <td> Robo</td>
+                </tr>     
+                <tr >              
+                  <td> 21651212 </td>
+                  <td> 25/10/2022</td>
+                  <td> 40000</td>
+                  <td> Si</td>
+                  <td> 50</td>
+                  <td> Robo</td>
+                  <td> Robo</td>
+                </tr>     
+                <tr >              
+                  <td> 21651212 </td>
+                  <td> 25/10/2022</td>
+                  <td> 40000</td>
+                  <td> Si</td>
+                  <td> 50</td>
+                  <td> Robo</td>
+                  <td> Robo</td>
+                </tr>           
+                <tr >              
+                  <td> 21651212 </td>
+                  <td> 25/10/2022</td>
+                  <td> 40000</td>
+                  <td> Si</td>
+                  <td> 50</td>
+                  <td> Robo</td>
+                  <td> Robo</td>
+                </tr>    
+              </tbody>
+            </table> 
+            <hr>   
+            <table class="table table-bordered table-hover">
+              <thead class="colorTabla ">
+                <tr>
+                  <th class="text-light" scope="col">Consultado</th>
+                  <th class="text-light aprobado" scope="col">Aprobado</th>
+                  <th class="text-light rechazado" scope="col">Rechazado</th>
+                </tr>
+              </thead>
+              <tbody (click)="detalle()">
+                <tr >              
+                  <td class="consultado" >$11.562.010</td>                 
+                  <td style="background-color: #D4EDDA;"> $10.015.565 </td>
+                  <td style="background-color: #F8D7DA;"> $1.546.445 </td>           
+                </tr>
+              </tbody>
+            </table>
+          </mat-card>
+        </div>
+      </div>                     
+    </mat-tab>
+  </mat-tab-group>
+  </mat-dialog-content>     
+  <mat-dialog-actions align="end">
+    <button mat-raised-button class="btn btn-primary colorTabla" mat-dialog-close>Salir</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Salir 2</button>
+  </mat-dialog-actions>
+
 

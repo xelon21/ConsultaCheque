@@ -93,7 +93,8 @@ export interface DialogData {
 
 .tamanio{
   width: 23vw;
-  margin-top: 1.5%;
+  margin-top: 2%;
+  margin-left: 6%;
 }
   `
   ]
@@ -220,26 +221,28 @@ export class ConsultaComponent implements OnInit {
 
   agregarCheque(){    
    
-  }
+  } 
 
- 
-
+  
+  campoFecha: boolean = false;
   respuestaRut(){   
+    try {
+      if (this.fecha.controls['fechaCheque'].value._isValid){
+        this.campoFecha = true;
+        console.log(this.fecha.controls['fechaCheque'].value._isValid);
+        console.log(this.consultaCheque.value);
+      }
+      
+    } catch (error) {    
+      Swal.fire('Debe ingresar una fecha')
+    }  
     
   }
 
   garantizar() {
     Swal.fire('Garantizado')
     // Validacion campo fecha***    
-      try {
-        if (this.fecha.controls['fechaCheque'].value._isVali){
-          console.log(this.fecha.controls['fechaCheque'].value._isValid);
-          console.log(this.consultaCheque.value);
-        }
-        
-      } catch (error) {
-        Swal.fire('Debe ingresar una fecha')
-      }  
+      
   }
   
   eliminar() {
@@ -267,8 +270,8 @@ export class ConsultaComponent implements OnInit {
         break;
     }
     if(this.rutValido){
-      this.detalleCargado = 4;
-      this.detalleCli = 4; 
+      this.detalleCargado = 2;
+      this.detalleCli = 2; 
       this.representante = 2     
     }else {    
       this.detalleCargado = 1;

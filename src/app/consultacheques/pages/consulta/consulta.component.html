@@ -131,21 +131,23 @@
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['numeroCheque'].errors">Debe ingresar un n° de cheque</span>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 " >
-                  <label for="inputNumeroCheque">Monto</label>
+                  <label for="inputNumeroCheque">Monto</label>                  
                   <input type="number" class="form-control form-control-sm" autocomplete="off"  formControlName="monto" id="inputMonto" placeholder="325216584" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['monto'].errors">Debe ingresar un monto</span>
                 </div>                
                 <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-4 "> 
     
                   <div>
-                    <mat-form-field class="tamanio" appearance="fill" [formGroup]="fecha" >
+                    <mat-form-field class="tamanio" [formGroup]="fecha" >
                       <mat-label>Fecha Cheque</mat-label>
                       <input matInput formControlName="fechaCheque" [matDatepicker]="fechaCheque" class="col-sm-6 col-md-6 col-lg-6 col-xl-3">                   
                       <mat-datepicker-toggle matSuffix [for]="fechaCheque"></mat-datepicker-toggle>
                       <mat-datepicker #fechaCheque></mat-datepicker>
                     </mat-form-field>         
+                  </div>
+                  <div class="alert alert-danger" style="width: 15vw; height: 3.5vw; margin-left: 5%;" role="alert" *ngIf="!campoFecha">
+                    Debe ingresar una fecha
                   </div>           
-                  <span class="form-text text-danger" *ngIf="fecha.controls['fechaCheque'].invalid">Debe ingresar una fecha</span>            
                   </div>          
               </div>
 
@@ -230,21 +232,22 @@
                 </div>                
                 <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
                   <br>                 
-                  <mat-expansion-panel style="background-color: #F9534B;" hideToggle *ngIf="representante === 1">                    
+                  <mat-expansion-panel  hideToggle *ngIf="representante === 1">                    
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                        <h3 style="margin-top: 3%; color: whitesmoke;">Representante Legal</h3><mat-icon #tooltip="matTooltip"
+                        <h3 style="margin-top: 3%; color: black;">Representante Legal</h3><mat-icon #tooltip="matTooltip"
                         matTooltip="Desplegar Representante"
                         matTooltipPosition="below">keyboard_arrow_down</mat-icon>
                       </mat-panel-title>                         
                     </mat-expansion-panel-header>                                          
                   </mat-expansion-panel>                 
-                    <mat-expansion-panel hideToggle style="background-color: green;" *ngIf="representante === 2" >                    
+                    <mat-expansion-panel hideToggle *ngIf="representante === 2" >                    
                       <mat-expansion-panel-header >
-                        <mat-panel-title ><h3 style="margin-top: 3%; color:whitesmoke;" class="textoEx">Representante Legal</h3>
+                        <mat-panel-title ><h3 style="margin-top: 3%; color:black;" class="textoEx">Representante Legal</h3>
                        <mat-icon #tooltip="matTooltip" 
                           matTooltip="Desplegar Representante"
                           matTooltipPosition="below">keyboard_arrow_down</mat-icon>
+                          <span *ngIf="consultaCheque.controls['rutGirador'].valid" class="badge badge-dark" style="background-color: green; margin-left: 2%;" ><mat-icon>done</mat-icon></span>
                         </mat-panel-title>                         
                       </mat-expansion-panel-header>
                       <table class="table table-bordered table-hover " style="background-color: white;">

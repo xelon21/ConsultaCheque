@@ -12,9 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { Dialog1Component } from './dialogs/dialog1/dialog1.component';
 import { DialogObservacionComponent } from './dialogs/dialog-observacion/dialog-observacion.component';
 import { DialogEstadoClienteComponent } from './dialogs/dialog-estado-cliente/dialog-estado-cliente.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SnipperComponent } from './dialogs/snipper/snipper.component';
-
+import { LoginComponent } from './login/login/login.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -25,7 +26,9 @@ import { SnipperComponent } from './dialogs/snipper/snipper.component';
     Dialog1Component,
     DialogObservacionComponent,
     DialogEstadoClienteComponent,
-    SnipperComponent,    
+    SnipperComponent,
+    LoginComponent
+   
   ],
   imports: [
     BrowserModule,    
@@ -33,7 +36,9 @@ import { SnipperComponent } from './dialogs/snipper/snipper.component';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    FormsModule
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    FormsModule    
   ],
   providers: [
     CargaScriptsService

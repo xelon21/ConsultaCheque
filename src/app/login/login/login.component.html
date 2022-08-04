@@ -1,0 +1,26 @@
+<div fxLayoutAlign="center center" class="login">
+    <div >
+    <form (ngSubmit)="login()" [formGroup]="formLogin">
+        <mat-card class="mat-elevation-z3 form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">       
+               <mat-card-header>
+                   <img src="/assets/logo.png">
+               </mat-card-header>
+               <div class="form-group col-sm-10 col-md-10 col-lg-10 col-xl-10 " style="margin-left: 9%;">
+                   <label for="inputUsuario">Usuario</label>
+                   <input type="text" class="form-control form-control-sm" formControlName="usuario" autocomplete="off" id="inputUsuario" placeholder="usuarioEjemplo" required>
+                   <span class="form-text text-danger" *ngIf="formLogin.controls['usuario'].invalid">ingrese un usuario</span>
+               </div>
+               <br>
+               <div class="form-group col-sm-10 col-md-10 col-lg-10 col-xl-10" style="margin-left: 9%;">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control form-control-sm" formControlName="password" autocomplete="off" id="inputPassword" placeholder="**************" required>
+                    <span class="form-text text-danger" *ngIf="formLogin.controls['password'].invalid" >Ingrese una contraseña</span>        
+               </div>
+               <br>
+               <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                <button mat-button  class="btn colorTabla btn-primary" style="margin-left: 40%; background-color: #3D5AFE;">Ingresar</button>
+               </div>
+       </mat-card>
+    </form>
+    </div>
+</div>

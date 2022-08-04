@@ -11,9 +11,8 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [      
-      { path: 'consulta', component: ConsultaComponent,
-      canActivate: [WardGuard],
-      canLoad: [WardGuard] },
+      { path: 'consulta', component: ConsultaComponent},
+      
       { path: 'formulario', component: FormularioComponent },
       
       { path: '**', redirectTo: 'consulta'}
@@ -23,6 +22,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  //exports: [RouterModule]
 })
 export class ConsultachequesRoutingModule { }

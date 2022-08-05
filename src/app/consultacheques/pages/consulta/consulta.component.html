@@ -15,19 +15,23 @@
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['observacion'].errors">Debe ingresar una observacion</span>
                  
                 </div>
-                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-5 ">
-                  <label for="estadoClave">Estado Clave</label>
-                  <input type="text" class="form-control form-control-sm" autocomplete="off"  formControlName="estadoClave" id="estadoClave" placeholder="Activa" required>                   
-                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['estadoClave'].errors">Debe ingresar un estado de clave</span>
+                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-2">
+                  <label style="padding-left: 2%">Estado Clave</label>
+                  <div>
+                    <h3 class="border border-2 rounded-2" style="padding-left: 4%; height: 2%; margin-top: 1.6vw; background-color: white;" *ngIf="estadoClave=== 'Activo'; else noActivo">Estado Clave:  <span style="color: green;">{{ estadoClave }}</span> </h3>
+                    <ng-template #noActivo>
+                      <h3 class="border border-2 rounded-2" style="padding-left: 4%; height: 2%; background-color: white;"><span style="color: red">{{ estadoClave }}</span></h3>
+                    </ng-template>
+                  </div>
+                  
                 </div>
               </div>
 
              <br>
               <div class="row">
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 " >
-                  <label for="inputConsutla">N° Consulta</label>
-                  <input type="number" class="form-control form-control-sm" autocomplete="off"  formControlName="numeroConsulta" id="inputConsulta" placeholder="N° 5468543" required>
-                  <span class="form-text text-danger" *ngIf="consultaCheque.controls['numeroConsulta'].errors">Debe ingresar n° de consulta</span>
+                  <label style="padding-left: 2%">Numero Consulta</label>
+                  <h3  class="border border-2 rounded-1" style=" padding-left: 2%; height: 45%; background-color: white;"><span>{{ numeroConsulta }}</span> </h3>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 ">
                   <label for="inputclaveCliente">Clave Cliente</label>
@@ -109,23 +113,13 @@
                           <span class="badge badge-dark" style="background-color: #FAE00D;" *ngIf="detalleCli === 4" ><mat-icon style="color: gray">warning_amber</mat-icon></span>
                         </button>
                       </mat-list-item>          
-                    </mat-list>    
-                    <!-- <ng-template #protesto>
-                      <button mat-button (click)="openDialog()"  class="colorTabla btn btn-primary" style="width: 13vw; margin-left: -3%;">Ver detalle
-                        <span class="badge badge-dark" style="background-color: green;" ><mat-icon>done</mat-icon></span>
-                      </button>
-                      <button mat-button (click)="detalleCliente()" class="colorTabla btn btn-primary" style="width: 15vw; margin-left: 4%;">Detalle Cliente
-                        <span class="badge badge-dark" style="background-color: green;" ><mat-icon>done</mat-icon></span>
-                      </button>
-                    </ng-template> -->
+                    </mat-list>
                 </div>               
               </div>
               
               <br>
               <div class="row ">
-               
-                <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
-    
+               <div class="form-group col-sm-6 col-md-6 col-lg-4 col-xl-4 ">
                   <label for="inputNumeroCheque">N°Cheque</label>
                   <input type="number" class="form-control form-control-sm" autocomplete="off"  formControlName="numeroCheque" id="inputNumeroCheque" placeholder="325216584" required>
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['numeroCheque'].errors">Debe ingresar un n° de cheque</span>
@@ -136,7 +130,6 @@
                   <span class="form-text text-danger" *ngIf="consultaCheque.controls['monto'].errors">Debe ingresar un monto</span>
                 </div>                
                 <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-4 "> 
-    
                   <div>
                     <mat-form-field class="tamanio" [formGroup]="fecha" >
                       <mat-label>Fecha Cheque</mat-label>
@@ -150,19 +143,18 @@
                   </div>           
                   </div>          
               </div>
-
               <br>
               <div class="row bordes"  role="alert">
                 <div class="form-group col-sm-6 col-md-3 col-lg-4 col-xl-4" >
                     <br>   
                    <button mat-button (click)="agregarCheque()" class="btn colorTabla btn-primary altito botoncito"  [disabled]="consultaCheque.invalid" *ngIf="consultaCheque.invalid; else agregar" >Agregar Cheque</button>
                   <ng-template #agregar>
-                    <button mat-button (click)="agregarCheque()" class="btn colorTabla btn-primary altito botoncito" style="background-color: green;">Agregar Cheque</button>
+                    <button mat-button (click)="agregarCheque()" class="btn colorTabla btn-primary altito botoncito" style="background-color: green;"><mat-icon style="padding-right: 1%;">add</mat-icon>Agregar Cheque</button>
                   </ng-template>
                   </div>
                   <div class="form-group col-sm-6 col-md-3 col-lg-4 col-xl-4 ">                  
                     <br>
-                    <button mat-button (click)="respuestaRut()" style="background-color: #FFE866; color: grey" class="btn btn-primary botonBordeIzquierda2 botoncito">Respuesta RUT</button>
+                    <button mat-button (click)="respuestaRut()" style="background-color: #FFE866; color: grey" class="btn btn-primary botonBordeIzquierda2 botoncito"><mat-icon>question_mark</mat-icon> Respuesta RUT </button>
                   </div>  
                   <div class="form-group col-sm-6 col-md-3 col-lg-4 col-xl-4 ">
                   <br>
@@ -171,9 +163,8 @@
                       <span class="badge badge-dark" style="background-color: green;" ><mat-icon>done</mat-icon></span>
                     </button>
                   </ng-template>                  
-                  <button mat-button (click)="agregarObservacion()" *ngIf="alertaObservacion; else obsValido" style="background-color: #F9534B; color: whitesmoke" class="btn btn-primary colorTabla botonBordeIzquierda4 botoncito">Ingresar observacion 
-                  
-                    </button>
+                  <button mat-button (click)="agregarObservacion()" *ngIf="alertaObservacion; else obsValido" style="background-color: #F9534B; color: whitesmoke" class="btn btn-primary colorTabla botonBordeIzquierda4 botoncito"><mat-icon style="margin-right: 2%;">add_box</mat-icon>Ingresar observacion 
+                  </button>
                   </div>               
                 </div>
                 <br>
@@ -185,8 +176,7 @@
               <hr>              
               <div class="row bordes">
                 <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
-                  <br>
-                  <!-- <mat-card class="table-responsive alert alert-primary"> -->
+                  <br>              
                     <table class="table table-bordered table-hover " style="background-color: white;">
                       <thead class="colorTabla ">
                         <tr>
@@ -228,16 +218,13 @@
                         </tr>    
                       </tbody>
                     </table> 
-                  <!-- </mat-card> -->
-                </div>                
+               </div>                
                 <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
                   <br>                 
-                  <mat-expansion-panel  hideToggle *ngIf="representante === 1">                    
+                  <mat-expansion-panel  hideToggle *ngIf="representante === 1" (click)="agregarRepresentante()">                    
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                        <h3 style="margin-top: 3%; color: black;">Representante Legal</h3><mat-icon #tooltip="matTooltip"
-                        matTooltip="Desplegar Representante"
-                        matTooltipPosition="below">keyboard_arrow_down</mat-icon>
+                        <h3 style="margin-top: 3%; color: black;">Representante legal no encontrado </h3><mat-icon style="background-color: red; color: white; margin-left: 2%;">close</mat-icon>
                       </mat-panel-title>                         
                     </mat-expansion-panel-header>                                          
                   </mat-expansion-panel>                 
@@ -269,19 +256,20 @@
                     </mat-expansion-panel>
                 </div>
               </div>
-         <hr>
+              <hr>
               <div class="row bordes"  role="alert">          
                 <div class="col-sm-6 col-md-3 col-lg-4 col-xl-4 " >
                     <br>  
-                    <button  mat-raised-button (click)="garantizar()" style="background-color: green;" class="colorTabla btn btn-primary altito botoncito">Garantizar</button>
+                    <button  mat-raised-button (click)="garantizar()" style="background-color: green;" class="colorTabla btn btn-primary altito botoncito"><mat-icon>done_all</mat-icon> Garantizar</button>
                   </div>
                   <div class="col-sm-6 col-md-3 col-lg-4 col-xl-4 ">
                     <br>    
-                    <button mat-button (click)="eliminar()" style="background-color: #F9534B;" class="btn btn-primary colorTabla botonBordeIzquierda2 altito botoncito" >Eliminar</button>
+                    <button mat-button (click)="eliminar()" style="background-color: #F9534B;" class="btn btn-primary colorTabla botonBordeIzquierda2 altito botoncito" ><mat-icon>delete_forever</mat-icon> Eliminar</button>
                   </div> 
                   <div class="col-sm-6 col-md-3 col-lg-4 col-xl-4" >
                     <br>
-                    <button mat-button (click)="nuevaConsulta()"  class="colorTabla btn btn-primary botonBordeIzquierda4 altito botoncito">Nueva Consulta</button>
+                    <button mat-button (click)="nuevaConsulta()"  class="colorTabla btn btn-primary botonBordeIzquierda4 altito botoncito"><mat-icon style="margin-right: 2%;">library_add</mat-icon>Nueva Consulta 
+                    </button>
                   </div>           
               </div>
               <hr>
@@ -289,57 +277,7 @@
             </form>
       </mat-card>    
     </div>
-    <!-- <script>
 
-      function checkRut(rut) {
-      // Despejar Puntos
-      var valor = rut.value.replace('.','');
-      // Despejar Guión
-      valor = valor.replace('-','');
-      
-      // Aislar Cuerpo y Dígito Verificador
-      cuerpo = valor.slice(0,-1);
-      dv = valor.slice(-1).toUpperCase();
-      
-      // Formatear RUN
-      rut.value = cuerpo + '-'+ dv
-      
-      // Si no cumple con el mínimo ej. (n.nnn.nnn)
-      if(cuerpo.length < 7) { rut.setCustomValidity("RUT Incompleto"); return false;}
-      
-      // Calcular Dígito Verificador
-      suma = 0;
-      multiplo = 2;
-      
-      
-      // Para cada dígito del Cuerpo
-      for(i=1;i<=cuerpo.length;i++) {
-      
-          // Obtener su Producto con el Múltiplo Correspondiente
-          index = multiplo * valor.charAt(cuerpo.length - i);
-          
-          // Sumar al Contador General
-          suma = suma + index;
-          
-          // Consolidar Múltiplo dentro del rango [2,7]
-          if(multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
-
-      }
-      
-      // Calcular Dígito Verificador en base al Módulo 11
-      dvEsperado = 11 - (suma % 11);
-      
-      // Casos Especiales (0 y K)
-      dv = (dv == 'K')?10:dv;
-      dv = (dv == 0)?11:dv;
-      
-      // Validar que el Cuerpo coincide con su Dígito Verificador
-      if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
-      
-      // Si todo sale bien, eliminar errores (decretar que es válido)
-      rut.setCustomValidity('');
-};
-    </script> -->
   
 
    

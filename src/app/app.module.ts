@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SnipperComponent } from './dialogs/snipper/snipper.component';
 import { LoginComponent } from './login/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AgregarRepresentanteLegalComponent } from './dialogs/agregar-representante-legal/agregar-representante-legal.component';
+
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DialogObservacionComponent,
     DialogEstadoClienteComponent,
     SnipperComponent,
-    LoginComponent
+    LoginComponent,
+    AgregarRepresentanteLegalComponent,
+
    
   ],
   imports: [

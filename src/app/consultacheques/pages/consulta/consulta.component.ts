@@ -13,6 +13,8 @@ import { CargaScriptsService } from '../../../carga-scripts.service';
 
 import * as vrut from 'jquery';
 import { SnipperComponent } from '../../../dialogs/snipper/snipper.component';
+import { AgregarRepresentanteLegalComponent } from 'src/app/dialogs/agregar-representante-legal/agregar-representante-legal.component';
+import { ValidacionrutService } from '../../../helpers/validacionrut.service';
 
 export const v = vrut;
 
@@ -33,13 +35,11 @@ export interface DialogData {
   selector: 'app-consulta',
   templateUrl: './consulta.component.html',
   styles: [`
-  .altito{
+
+.altito{
   margin-bottom: 1.5vw;
   
 }
-
-
-
 
 .botonBordeIzquierda{
     margin-left: 5vw;
@@ -112,6 +112,8 @@ export class ConsultaComponent implements OnInit {
   
   rExpresion = "([0-9.-]*)([k]?)";
   obs: string = '';
+  estadoClave: string = 'No Activo';
+  numeroConsulta: number = 0;
   
   fecha = new FormGroup({
     fechaCheque: new FormControl()    
@@ -119,8 +121,6 @@ export class ConsultaComponent implements OnInit {
 
   consultaCheque: FormGroup = this.fb.group({
     observacion: [,[Validators.maxLength(200),Validators.minLength(10), Validators.required ]],
-    estadoClave: [,[Validators.required, Validators.minLength(4)]],
-    numeroConsulta: [,[Validators.required, Validators.min(0)]],
     claveCliente:[,[Validators.required, Validators.minLength(4)]],
     banco: [,[Validators.required, Validators.min(0)]],
     cuentaCorriente: [,[Validators.required, Validators.min(0)]],
@@ -146,7 +146,8 @@ export class ConsultaComponent implements OnInit {
     private dialog: MatDialog,
     private activateRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private carga: CargaScriptsService) { 
+    private carga: CargaScriptsService,
+    private valrut: ValidacionrutService) { 
 
       carga.Carga(["jquery.rut"])
       
@@ -193,7 +194,22 @@ export class ConsultaComponent implements OnInit {
     popup: 'animate__animated animate__fadeOutUp'
   }
   
-})
+  })
+  }
+  agregarRepresentante(){
+    Swal.fire({
+      title: 'El Girador ingresado no posee representante legal, desea agregar uno?',
+      showDenyButton: true,    
+      denyButtonText: `No agregar`,
+      confirmButtonText: 'Agregar',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.dialog.open(AgregarRepresentanteLegalComponent)
+      } else if (result.isDenied) {
+        Swal.fire('No se ha agregado un representante legal')
+      }
+    })
   }
 
   agregarObservacion() {
@@ -255,118 +271,22 @@ export class ConsultaComponent implements OnInit {
   }
  
 
+  rutaverificar: any;
+
   validacionRut(){   
      
-    switch (this.validarRut(this.consultaCheque.controls['rutGirador'].value)) {
-      case 0: 
+    this.rutaverificar = this.valrut.validarRut(this.consultaCheque.controls['rutGirador'].value)
+    if (this.rutaverificar === 0 || this.rutaverificar === 1) {
       this.esValido = true;
       this.rutValido = false; 
-        break;      
-      case 1:
-      this.esValido = true;
-      this.rutValido = false;     
-      break;    
-      default:       
-        break;
-    }
-    if(this.rutValido){
-      this.detalleCargado = 2;
-      this.detalleCli = 2; 
-      this.representante = 2     
-    }else {    
-      this.detalleCargado = 1;
-      this.detalleCli = 1;
-      this.representante = 1;
+    }else {      
+      this.esValido = false;
+      this.rutValido = true;
     }
 
   }
 
-//#region Variables y metodo validarRut
-  suma: string | number = 0;
-  largo!: number;
-  crut!: string;
-  dv! : string;
-  mul!: number;
-  res!: number;
-  dvi!: number;
-  rutBack!: any;
-  
-  // Metodo para validar Rut
-  validarRut(rut: string ) { 
-    
-    var tmpstr = "";
-    var intlargo = rut
-    if (intlargo.length> 0)
-    {
-      this.crut = rut
-      this.largo = this.crut.length;
-      
-      if ( this.largo <2 )
-      {
-        //alert('rut inválido')
-        this.esValido = true;
-        return this.rutValido = false;			
-      }    
-      for (let i=0; i <this.crut.length ; i++ )
-      if ( this.crut.charAt(i) != ' ' && this.crut.charAt(i) != '.' && this.crut.charAt(i) != '-' )
-		{
-      tmpstr = tmpstr + this.crut.charAt(i);     
-		}
-		rut = tmpstr;
-		this.crut=tmpstr;
-		this.largo = this.crut.length;
- 
-		if ( this.largo> 2 ){
-      rut = this.crut.substring(0, this.largo - 1);      
-    }else{
-			rut = this.crut.charAt(0);      
-    }
-    
-		this.dv = this.crut.charAt(this.largo-1); 
-    
-		if ( rut == null || this.dv == null ){      
-      return 0;
-    }     
-    
-		var dvr = '0';
-		this.suma = 0;
-		this.mul  = 2; 
-    this.rutBack = rut;
-		for (let i= rut.length-1 ; i>= 0; i--)
-		{
-      this.suma = this.suma + this.rutBack.charAt(i) * this.mul;
-			if (this.mul == 7)
-      this.mul = 2;
-			else
-      this.mul++;      
-		}
-    
-		this.res = this.suma % 11;
-    
-		if (this.res==1)
-    dvr = 'k';
-		else if (this.res==0)
-    dvr = '0';
-		else
-		{
-			this.dvi = 11-this.res;
-			dvr = this.dvi + "";
-		}
-    
-		if ( dvr != this.dv.toLowerCase() )
-		{			 
-      return 1;
-		}		
-		this.esValido = false;
-    this.rutValido = true;   
-	}else {
-    this.esValido = true;
-    this.rutValido = false;   
-  }
-  return;
-  //#endregion
- 
-}
+
      
 }
 

@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <mat-toolbar>
+            <h1>Agregar Representante Legal</h1>
+        </mat-toolbar>
+        <mat-card>
+            <form [formGroup]="addRepresentante">
+                <div class="row">
+                    <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
+                        <label for="inputRutRepresentante">rutRepresentante</label>
+                        <input formControlName="rutRepresentante" class="form-control form-control-sm" (keyup)="validacionRut()" 
+                        id="rut" type="text" placeholder="14.569.484-1" autocomplete="off" required
+                        onkeypress="return (event.charCode >= 48 && event.charCode <= 57 || event.charCode == 107)" 
+                        maxlength="12"/>                       
+                       <div class="form-text text-danger" *ngIf="esValido">Debe ingresar un rut valido</div>
+                       <div class="form-text text-success" *ngIf="rutValido">Rut Valido</div>            
+                    </div>
+                    <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <label for="inputTelefono">Telefono</label>
+                        <input type="number" class="form-control form-control-sm" formControlName="telefonoRepresentante" autocomplete="off" id="inputTelefono" placeholder="Telefono Representante" required>
+                        <span class="form-text text-danger" *ngIf="addRepresentante.controls['telefonoRepresentante'].errors">Debe ingresar un telefono</span>                      
+                    </div>
+                </div>
+                <br>
+                  <div class="row">
+                      <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
+                        <label for="inputOtro">Otro Dato</label>
+                        <input type="text" class="form-control form-control-sm" formControlName="otroDato" autocomplete="off" id="inputOtro" placeholder="Otro Dato" required>
+                        <span class="form-text text-danger" *ngIf="addRepresentante.controls['otroDato'].errors">Debe ingresar otro dato</span>                     
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <button mat-dialog-close mat-button (click)="ingresarRepresentante()"  class="colorTabla btn btn-primary" style=" background-color: #3D5AFE;">
+                          <mat-icon style="margin-right: 2%;">library_add</mat-icon>Ingresar </button>
+                    </div>
+            </form>
+        </mat-card>
+    </div>
+</div>

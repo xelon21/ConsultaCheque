@@ -144,12 +144,12 @@ Swal.fire({
   }
 
   buscar(){
-    console.log(this.termino)
-    this.datosService.buscarPais(this.termino)
-      .subscribe( (resp) => {
-        this.datos = resp;
-        console.log(resp)
-      })
+    // console.log(this.termino)
+    // this.datosService.buscarPais(this.termino)
+    //   .subscribe( (resp) => {
+    //     this.datos = resp;
+    //     console.log(resp)
+    //   })
   }
 
   

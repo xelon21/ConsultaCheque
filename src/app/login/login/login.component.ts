@@ -29,8 +29,7 @@ import { Router } from '@angular/router';
     margin: 18% auto;    
   }
 
-  `
-  ]
+  `]
 })
 export class LoginComponent implements OnInit {
 
@@ -45,9 +44,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(){
+ login(){
+
+     //http://10.0.0.30:4000/api/usuarios/autorizar/
 
     if(this.formLogin.valid){
+      
       this.router.navigateByUrl('/home/consulta');
     }
 

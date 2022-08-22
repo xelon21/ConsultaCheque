@@ -66,7 +66,7 @@
                           <input formControlName="rutGirador" class="form-control form-control-sm" (keyup)="validacionRut()" 
                                   id="rut" type="text" placeholder="14.569.484-1" autocomplete="off" required
                                   onkeypress="return (event.charCode >= 48 && event.charCode <= 57 || event.charCode == 107)"
-                                  />
+                                  maxlength="12"/>
                                   <!-- <span class="form-text text-danger" *ngIf="consultaCheque.controls['rutGirador'].errors" >Ingrese un rut valido || {{ this.consultaCheque.controls['estadoClave'].valid }}</span>   -->
                           <div class="form-text text-danger" *ngIf="esValido">Debe ingresar un rut valido</div>
                           <div class="form-text text-success" *ngIf="rutValido">Rut Valido</div>            
@@ -138,9 +138,10 @@
                       <mat-datepicker #fechaCheque></mat-datepicker>
                     </mat-form-field>         
                   </div>
-                  <div class="alert alert-danger" style="width: 15vw; height: 3.5vw; margin-left: 5%;" role="alert" *ngIf="!campoFecha">
+                  <span style="width: 15vw; padding-top: 1%; margin-left: 6%;" class="form-text text-danger" *ngIf="!campoFecha" >Debe ingresar una fecha</span>
+                  <!-- <div class="alert alert-danger" style="width: 15vw; height: 3.5vw; margin-left: 5%;" role="alert" >
                     Debe ingresar una fecha
-                  </div>           
+                  </div>            -->
                   </div>          
               </div>
               <br>
@@ -173,10 +174,11 @@
               Debe ingresar una obserbacion
             </div>
               </div>
-              <hr>              
+              <hr>        
+              <h2>Cheques a consultar</h2>   
               <div class="row bordes">
                 <div class="form-group col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
-                  <br>              
+                  <br>  
                     <table class="table table-bordered table-hover " style="background-color: white;">
                       <thead class="colorTabla ">
                         <tr>

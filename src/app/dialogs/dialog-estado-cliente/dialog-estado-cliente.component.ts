@@ -23,7 +23,7 @@ export class DialogEstadoClienteComponent implements OnInit {
   }
 
   cliente(){
-    Swal.fire('Cliente: no existe Cliente.')
+    Swal.fire('no existe Cliente.')
   }
 
 }

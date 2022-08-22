@@ -93,7 +93,8 @@ export interface DialogData {
 
 .tamanio{
   width: 23vw;
-  margin-top: 2%;
+  height: 3vw;
+  margin-top: 2%;  
   margin-left: 6%;
 }
   `
@@ -105,10 +106,8 @@ export class ConsultaComponent implements OnInit {
 
   alertaObservacion: boolean = true;
   clientex: Cliente[] = [];
-  detalleCargado: number = 1;
-  detalleCli: number  = 1;
-  // detalleCargadop: boolean = false;
-  // morosidad: boolean = false;
+  detalleCargado: number = 0;
+  detalleCli: number  = 0;
   
   rExpresion = "([0-9.-]*)([k]?)";
   obs: string = '';
@@ -163,10 +162,7 @@ export class ConsultaComponent implements OnInit {
 
     })
 
-    this.datosService.mostrarclientes()
-      .subscribe( datos => {
-        this.clientex = datos;
-    })
+   
   }
 
   openDialog(  ) {    
@@ -235,7 +231,11 @@ export class ConsultaComponent implements OnInit {
     Swal.fire('Cliente: No hay cliente')
   }
 
-  agregarCheque(){    
+  agregarCheque(){ 
+    
+    // this.datosService.buscarPais(this.consultaCheque.controls['rutGirador'].value).subscribe( respuesta => {
+    //   console.log(respuesta); 
+    // })
    
   } 
 
@@ -243,6 +243,7 @@ export class ConsultaComponent implements OnInit {
   campoFecha: boolean = false;
   respuestaRut(){   
     try {
+      console.log(this.fecha.controls['fechaCheque'].value)
       if (this.fecha.controls['fechaCheque'].value._isValid){
         this.campoFecha = true;
         console.log(this.fecha.controls['fechaCheque'].value._isValid);

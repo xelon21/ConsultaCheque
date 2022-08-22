@@ -22,21 +22,21 @@ import { Country } from "../Interfaces/interface";
               .set( 'fields', 'name,capital,cca2,flags,population,area' )    
       }
 
-    mostrarclientes(): Observable<Cliente[]> {
-      const url = `http://localhost:4000/api/pruebas/mostrar`
+    // mostrarclientes(): Observable<Cliente[]> {
+    //   const url = `http://localhost:4000/api/pruebas/mostrar`
 
-      return this.http.get<Cliente[]>(url);
+    //   return this.http.get<Cliente[]>(url);
 
-    }
+    // }
     
     
-    buscarPais( termino: string ): Observable<Country[]> {
+    // buscarPais( termino: string ): Observable<Country[]> {
     
-        const url = `${ this.apiUrl }/name/${ termino }`;
+    //     const url = `${ this.apiUrl }/name/${ termino }`;
     
-        return this.http.get<Country[]>( url, {params: this.httpParams} );
+    //     return this.http.get<Country[]>( url, {params: this.httpParams} );
                   
-      }
+    //   }
 
     validaIngresoGuard() {
          return of(true)

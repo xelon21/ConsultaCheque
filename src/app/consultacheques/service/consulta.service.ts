@@ -13,30 +13,9 @@ import { Country } from "../Interfaces/interface";
   
   export class ConsultaService { 
 
-    private apiUrl: string = 'https://restcountries.com/v3.1';
 
-    constructor( private http: HttpClient){}
-    
-    get httpParams () {
-        return new HttpParams()
-              .set( 'fields', 'name,capital,cca2,flags,population,area' )    
-      }
+    constructor( private http: HttpClient){}   
 
-    // mostrarclientes(): Observable<Cliente[]> {
-    //   const url = `http://localhost:4000/api/pruebas/mostrar`
-
-    //   return this.http.get<Cliente[]>(url);
-
-    // }
-    
-    
-    // buscarPais( termino: string ): Observable<Country[]> {
-    
-    //     const url = `${ this.apiUrl }/name/${ termino }`;
-    
-    //     return this.http.get<Country[]>( url, {params: this.httpParams} );
-                  
-    //   }
 
     validaIngresoGuard() {
          return of(true)
